@@ -15,7 +15,7 @@ namespace Character.MVC
             _inputController.GetKeyboardMovement(_characterData.MovementKeyboardData);
             _inputController.GetMouseMovement(_characterData.MovementMouseData);
             
-            _characterModel.MoveCharacter(_characterData.MovementKeyboardData, _characterData.Rb, _characterData.SpeedOfMoving, _characterData.MaxSpeedOfMoving);
+            _characterModel.MoveCharacter(_characterData.MovementKeyboardData, _characterData.Rigidbody, _characterData.SpeedOfMoving, _characterData.MaxSpeedOfMoving);
         }
     }
 }

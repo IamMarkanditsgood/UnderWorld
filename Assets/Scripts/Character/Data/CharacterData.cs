@@ -5,7 +5,7 @@ namespace Character.Data
 {
     public class CharacterData : MonoBehaviour
     {
-        [SerializeField] private Rigidbody _rb;
+        [SerializeField] private Rigidbody _rigidbody;
         
         [SerializeField] private GameObject _characterBody;
         
@@ -19,7 +19,7 @@ namespace Character.Data
         public MovementKeyboardData MovementKeyboardData => _movementKeyboardData;
         public MovementMouseData MovementMouseData => _movementMouseData;
 
-        public Rigidbody Rb => _rb;
+        public Rigidbody Rigidbody => _rigidbody;
 
 
         public GameObject CharacterBody => _characterBody;
