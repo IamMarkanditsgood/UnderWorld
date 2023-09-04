@@ -7,15 +7,34 @@ namespace Character.MVC
     {
         [SerializeField] private CharacterData _characterData;
 
-        private InputController _inputController = new();
-        private CharacterModel _characterModel = new CharacterModel();
-
+        private readonly InputController _inputController = new();
+        private readonly CharacterModel _characterModel = new();
+        
         private void FixedUpdate()
         {
-            _inputController.GetKeyboardMovement(_characterData.MovementKeyboardData);
-            _inputController.GetMouseMovement(_characterData.MovementMouseData);
-            
-            _characterModel.MoveCharacter(_characterData.MovementKeyboardData, _characterData.Rigidbody, _characterData.SpeedOfMoving, _characterData.MaxSpeedOfMoving);
+            _inputController.CheckKeyboardKeys();
+        }
+
+        private void OnEnable()
+        {
+            _inputController.MoveButtonsPressed += MoveCharacter;
+            _inputController.MoveMouse += RotateCharacter;
+        }
+
+        private void OnDisable()
+        {
+            _inputController.MoveButtonsPressed -= MoveCharacter;
+            _inputController.MoveMouse -= RotateCharacter;
+        }
+
+        private void MoveCharacter(Vector2 movementDirection)
+        {
+            _characterModel.MoveCharacter(movementDirection, _characterData.Rigidbody, _characterData.SpeedOfMoving,
+                _characterData.MaxSpeedOfMoving);
+        }
+
+        private void RotateCharacter(Vector2 movementDirection)
+        {
         }
     }
 }

@@ -1212,7 +1212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c73b64a10f345bd44b52ef9fa90aedc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rb: {fileID: 444898893}
+  _rigidbody: {fileID: 444898893}
   _characterBody: {fileID: 2452179397130261937}
   _speedOfRotation: 1
   _speedOfMoving: 20
