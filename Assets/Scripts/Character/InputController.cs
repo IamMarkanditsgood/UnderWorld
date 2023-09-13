@@ -7,6 +7,9 @@ namespace Character
     {
         public Action<Vector2> MoveButtonsPressed;
         public Action<Vector2> MoveMouse;
+        public Action ShiftPressed;
+        public Action LBMPressed;
+        public Action RBMPressed;
 
         private Vector2 GetKeyboardMovement()
         {
@@ -16,17 +19,21 @@ namespace Character
             return keyboardData;
         }
 
-        private Vector2 GetMouseMovement()
+        private Vector2 GetMouseScreenPos()
         {
             Vector2 moueData;
-            moueData.y = Input.GetAxis("Mouse Y");
-            ;
-            moueData.x = Input.GetAxis("Mouse X");
+            moueData.y = Input.mousePosition.y;
+            moueData.x = Input.mousePosition.x;
             return moueData;
         }
 
         public void CheckKeyboardKeys()
         {
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                ShiftPressed?.Invoke();
+            }
+
             if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
             {
                 MoveButtonsPressed?.Invoke(GetKeyboardMovement());
@@ -35,9 +42,18 @@ namespace Character
 
         public void CheckMouseKeys()
         {
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                LBMPressed?.Invoke();
+            }
+
+            if (Input.GetKeyDown(KeyCode.Mouse1))
+            {
+                RBMPressed?.Invoke();   
+            }
             if (Input.GetAxis("Mouse X") != 0 || Input.GetAxis("Mouse Y") != 0)
             {
-                MoveMouse?.Invoke(GetMouseMovement());
+                MoveMouse?.Invoke(GetMouseScreenPos());
             }
         }
     }
