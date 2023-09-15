@@ -17,9 +17,10 @@ namespace Character.MVC
             
             _inputController.MoveButtonsPressed += MoveCharacter;
             _inputController.MoveMouse += MoveRotationTarget;
-            _inputController.ShiftPressed += ShiftPresed;
-            _inputController.LBMPressed += LbmPresed;
-            _inputController.RBMPressed += RbmPresed;
+            _inputController.ShiftPressed += () => _characterModel.UseSkill(_characterData.MainSkillData.Skill);
+            _inputController.LbmPressed += () => _characterModel.UseSkill(_characterData.ShootskillData.Skill);    
+            _inputController.RbmPressed += () => _characterModel.UseSkill(_characterData.SupportkillData.Skill);
+            _inputController.EPressed +=  EPressed;
         }
 
         private void Update()
@@ -33,10 +34,31 @@ namespace Character.MVC
             _characterModel.RotateCharacter(_characterData.CharacterBody, _characterData.RotationTarget, _characterData.SpeedOfRotation);
         }
 
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.layer == LayerMask.NameToLayer("Interactable"))
+            {   
+                
+                _characterData.CurrentInteractableObject = other.gameObject;
+            }
+        }
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.gameObject.layer == LayerMask.NameToLayer("Interactable"))
+            {   
+                
+                _characterData.CurrentInteractableObject = null;
+            }
+        }
+
         private void OnDestroy()
         {
             _inputController.MoveButtonsPressed -= MoveCharacter;
             _inputController.MoveMouse -= MoveRotationTarget;
+            _inputController.ShiftPressed -= () => _characterModel.UseSkill(_characterData.MainSkillData.Skill);
+            _inputController.LbmPressed -= () => _characterModel.UseSkill(_characterData.ShootskillData.Skill);
+            _inputController.RbmPressed -= () => _characterModel.UseSkill(_characterData.SupportkillData.Skill);
+            _inputController.EPressed -= EPressed;
         }
 
         private void MoveCharacter(Vector2 movementDirection)
@@ -50,17 +72,14 @@ namespace Character.MVC
             _characterModel.MoveRotationTarget(_characterData, mousePos);
         }
 
-        private void ShiftPresed()
+        private void EPressed()
         {
-            _characterModel.UseSkill(_characterData.MainSkillData.Skill);    
+            if (_characterData.CurrentInteractableObject != null)
+            {
+                _characterModel.InteractWithEnvironment(_characterData.CurrentInteractableObject);
+                _characterData.CurrentInteractableObject = null;
+            }
         }
-        private void LbmPresed()
-        {
-            _characterModel.UseSkill(_characterData.ShootskillData.Skill);    
-        }
-        private void RbmPresed()
-        {
-            _characterModel.UseSkill(_characterData.SupportkillData.Skill);    
-        }
+
     }
 }

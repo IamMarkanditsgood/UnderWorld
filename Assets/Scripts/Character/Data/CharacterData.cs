@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+
 using Skills;
 using Skills.Dictionaries;
 using UnityEngine;
@@ -21,6 +22,7 @@ namespace Character.Data
         private SkillData _supportkillData = new SkillData();
         private SkillData _mainSkillData = new SkillData();
         private SkillDictionaries _skillDictionaries = new SkillDictionaries();
+        [SerializeField] private GameObject _currentInteractableObject;
         
         public Rigidbody Rigidbody => _rigidbody;
         public GameObject CharacterBody => _characterBody;
@@ -35,6 +37,12 @@ namespace Character.Data
         public SkillData SupportkillData => _supportkillData;
         public SkillData MainSkillData => _mainSkillData;
         public SkillDictionaries SkillDictionaries => _skillDictionaries;
+        public GameObject CurrentInteractableObject
+        {
+            get { return _currentInteractableObject;}
+            set { _currentInteractableObject = value; }
+        }
+
 
     }
 }

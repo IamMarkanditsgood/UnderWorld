@@ -8,8 +8,9 @@ namespace Character
         public Action<Vector2> MoveButtonsPressed;
         public Action<Vector2> MoveMouse;
         public Action ShiftPressed;
-        public Action LBMPressed;
-        public Action RBMPressed;
+        public Action LbmPressed;
+        public Action RbmPressed;
+        public Action EPressed;
 
         private Vector2 GetKeyboardMovement()
         {
@@ -34,6 +35,10 @@ namespace Character
                 ShiftPressed?.Invoke();
             }
 
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                EPressed?.Invoke();
+            }
             if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
             {
                 MoveButtonsPressed?.Invoke(GetKeyboardMovement());
@@ -44,12 +49,12 @@ namespace Character
         {
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
-                LBMPressed?.Invoke();
+                LbmPressed?.Invoke();
             }
 
             if (Input.GetKeyDown(KeyCode.Mouse1))
             {
-                RBMPressed?.Invoke();   
+                RbmPressed?.Invoke();   
             }
             if (Input.GetAxis("Mouse X") != 0 || Input.GetAxis("Mouse Y") != 0)
             {

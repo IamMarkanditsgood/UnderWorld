@@ -57,5 +57,10 @@ namespace Character.MVC
             skill.UseSkill();
         }
 
+        public void InteractWithEnvironment(GameObject interactableObject)
+        {
+            interactableObject.GetComponent<IInteractable>().InteractWithCharacter();
+        }
+
     }
 }
