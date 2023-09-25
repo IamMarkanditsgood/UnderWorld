@@ -361,6 +361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0aa2573512756714a882275a7c14cdff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _initialSkillsConfig: {fileID: 11400000, guid: 86bfbd50b4279b4448eb9050f4706db1, type: 2}
   _rigidbody: {fileID: 444898893}
   _characterBody: {fileID: 444898890}
   _rotationManager:
