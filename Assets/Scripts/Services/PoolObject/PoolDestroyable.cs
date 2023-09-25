@@ -1,13 +1,13 @@
 using UnityEngine;
 
-namespace Services.ObjectPool
+namespace Services.PoolObject
 {
     public class PoolDestroyable : MonoBehaviour, IDestroyable
     {
-        private PoolObjectSystem.ObjectPool _objectPool;
+        private ObjectPool _objectPool;
 
 
-        public void Init(PoolObjectSystem.ObjectPool objectPool)
+        public void Init(PoolObject.ObjectPool objectPool)
         {
             _objectPool = objectPool;
         }

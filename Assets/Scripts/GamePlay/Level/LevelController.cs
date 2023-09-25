@@ -1,12 +1,16 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using GamePlay.Level.ScriptableObjects;
 using UnityEngine;
-using Object = UnityEngine.Object;
 
-public class LevelController : MonoBehaviour
+namespace GamePlay.Level
 {
-    [SerializeField] private LevelData _levelData;
-    private LevelViev _levelViev = new LevelViev();
+    public class LevelController : MonoBehaviour
+    {
+        [SerializeField] private PrefabsConfig _prefabContainer;
+        [SerializeField] private ObjectContainer _objectContainer;
+        [SerializeField] private Transform _enemyContainer;
 
+        public PrefabsConfig PrefabContainer => _prefabContainer;
+        public ObjectContainer ObjectContainer => _objectContainer;
+        public Transform EnemyContainer => _enemyContainer;
+    }
 }

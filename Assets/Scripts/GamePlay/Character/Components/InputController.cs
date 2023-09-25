@@ -1,12 +1,11 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Character
+namespace GamePlay.Character.Components
 {
     public class InputController
     {
         public event Action<Vector2> OnMoveButtonsPressed;
-        public event Action<Vector2> MoveMouse;
         public event Action OnShiftPressed;
         public event Action OnLeftButtonMousePressed;
         public event Action OnRightButtonMousePressed;
@@ -19,15 +18,6 @@ namespace Character
             keyboardData.y = Input.GetAxis("Vertical");
             return keyboardData;
         }
-
-        private Vector2 GetMouseScreenPos()
-        {
-            Vector2 moueData;
-            moueData.y = Input.mousePosition.y;
-            moueData.x = Input.mousePosition.x;
-            return moueData;
-        }
-
         public void CheckKeyboardKeys()
         {
             if (Input.GetKeyDown(KeyCode.LeftShift))
@@ -54,10 +44,6 @@ namespace Character
             if (Input.GetKeyDown(KeyCode.Mouse1))
             {
                 OnRightButtonMousePressed?.Invoke();   
-            }
-            if (Input.GetAxis("Mouse X") != 0 || Input.GetAxis("Mouse Y") != 0)
-            {
-                MoveMouse?.Invoke(GetMouseScreenPos());
             }
         }
     }

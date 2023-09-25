@@ -1,22 +1,39 @@
-using Character.Data;
+using System;
+using GamePlay.Character.Skills.Dictionaries;
+using UnityEngine;
 
 namespace GamePlay.Character.Skills
 {
+    [Serializable]
     public class SkillsManager
     {
-        public void SetInitialSkillsData(CharacterData characterData)
+        [SerializeField] private SkillsConfig _mainSkillScriptableObject;
+        [SerializeField] private SkillsConfig _shootSkillScriptableObject;
+        [SerializeField] private SkillsConfig _supportSkillScriptableObject;
+        
+        private SkillData _shootskillData = new SkillData();
+        private SkillData _supportkillData = new SkillData();
+        private SkillData _mainSkillData = new SkillData();
+        private SkillDictionaries _skillDictionaries = new SkillDictionaries();
+
+        public SkillData ShootskillData => _shootskillData;
+        public SkillData SupportkillData => _supportkillData;
+        public SkillData MainSkillData => _mainSkillData;
+        public SkillDictionaries SkillDictionaries => _skillDictionaries;
+        
+        public void SetInitialSkillsData(SkillTypes initialMainSkill,SkillTypes initialShootSkill,SkillTypes initialSupportSkill, ISkillUsable mainSkillScript, ISkillUsable shootSkillScript,ISkillUsable supportSkillScript)
         {
-            characterData.MainSkillData.SkillTypes = SkillTypes.Teleport;
-            characterData.MainSkillData.Skill = new Teleport();
-            characterData.MainSkillData.SkillsConfig = characterData.MainSkillScriptableObject;
+            _mainSkillData.SkillTypes = initialMainSkill;
+            _mainSkillData.Skill = mainSkillScript;
+            _mainSkillData.SkillsConfig = _mainSkillScriptableObject;
             
-            characterData.ShootskillData.SkillTypes = SkillTypes.Arrow;
-            characterData.ShootskillData.Skill = new Arrow();
-            characterData.ShootskillData.SkillsConfig = characterData.ShootSkillScriptableObject;
+            _shootskillData.SkillTypes = initialShootSkill;
+            _shootskillData.Skill = shootSkillScript;
+            _shootskillData.SkillsConfig = _shootSkillScriptableObject;
             
-            characterData.SupportkillData.SkillTypes = SkillTypes.Swords;
-            characterData.SupportkillData.Skill = new Swords();
-            characterData.SupportkillData.SkillsConfig = characterData.SupportSkillScriptableObject;
+            _supportkillData.SkillTypes = initialSupportSkill;
+            _supportkillData.Skill = supportSkillScript;
+            _supportkillData.SkillsConfig = _supportSkillScriptableObject;
         }
         public void UseSkill(ISkillUsable skill)
         {

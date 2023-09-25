@@ -7,5 +7,6 @@ public class Teleport : ISkillUsable
     public void UseSkill()
     {
         Debug.Log("Teleport");
+        //TODO MAKE SKILL LOGIC
     }
 }

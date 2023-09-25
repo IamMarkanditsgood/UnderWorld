@@ -1,10 +1,12 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
-namespace GamePlay.Character.Skills.Dictionaries
+namespace GamePlay.Level.ScriptableObjects
 {
-    public class SkillDictionaries
+    [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/InitialSkillsScriptableObject", order = 1)]
+    public class InitialSkillsConfig : ScriptableObject
     {
-        private Dictionary<SkillTypes, float> _skillsDamage = new Dictionary<SkillTypes, float>()
+        public Dictionary<SkillTypes, float> SkillsDamage = new Dictionary<SkillTypes, float>()
         {
             { SkillTypes.None, 0f},
             { SkillTypes.Arrow, 10.0f },
@@ -22,7 +24,7 @@ namespace GamePlay.Character.Skills.Dictionaries
             { SkillTypes.TimeStopper, 0.0f },
             { SkillTypes.SuperKiller, 40.0f }
         };
-        private Dictionary<SkillTypes, float> _skillsReloadTimer = new Dictionary<SkillTypes, float>()
+        public Dictionary<SkillTypes, float> SkillsReloadTimer = new Dictionary<SkillTypes, float>()
         {
             { SkillTypes.None, 0f},
             { SkillTypes.Arrow, 10.0f },
@@ -40,17 +42,5 @@ namespace GamePlay.Character.Skills.Dictionaries
             { SkillTypes.TimeStopper, 0.0f },
             { SkillTypes.SuperKiller, 40.0f }
         };
-
-        public Dictionary<SkillTypes, float> SkillsDamage
-        {
-            get => _skillsDamage;
-            set => _skillsDamage = value;
-        }
-        public Dictionary<SkillTypes, float> SkillsReloadTimer
-        {
-            get => _skillsReloadTimer;
-            set => _skillsReloadTimer = value;
-        }
-        
     }
 }

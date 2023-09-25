@@ -1,17 +1,15 @@
 using System.Collections.Generic;
-using Services.ObjectPool;
 using UnityEngine;
 
-namespace PoolObjectSystem
+namespace Services.PoolObject
 {
     public class ObjectPool
     {
         private GameObject Prefab { get; }
         private Transform Container { get; }
+        
         public List<GameObject> DisabledPool { get; private set; }
-
         public List<GameObject> EnabledPool { get; private set; }
-
 
         public ObjectPool(GameObject prefab, int count, Transform container)
         {

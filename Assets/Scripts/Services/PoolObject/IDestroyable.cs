@@ -1,4 +1,4 @@
-namespace Services.ObjectPool
+namespace Services.PoolObject
 {
     public interface IDestroyable
     {
