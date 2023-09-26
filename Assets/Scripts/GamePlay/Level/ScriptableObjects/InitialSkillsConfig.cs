@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace GamePlay.Level.ScriptableObjects
 {
     [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/InitialSkillsScriptableObject", order = 1)]
-    public class InitialSkillsConfig : ScriptableObject
+    public class InitialSkillsConfig : SerializedScriptableObject
     {
         public Dictionary<SkillTypes, float> SkillsDamage = new Dictionary<SkillTypes, float>()
         {
