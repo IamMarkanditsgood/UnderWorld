@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using GamePlay.Bullets;
 
 namespace GamePlay.Character.Skills.Dictionaries
 {
@@ -14,7 +15,6 @@ namespace GamePlay.Character.Skills.Dictionaries
             { SkillTypes.QuantumBall, 30.0f },
             { SkillTypes.Swords, 12.0f },
             { SkillTypes.Mines, 18.0f },
-            { SkillTypes.SuperGuns, 22.0f },
             { SkillTypes.Turret, 27.0f },
             { SkillTypes.Vortex, 35.0f },
             { SkillTypes.Teleport, 5.0f },
@@ -32,7 +32,6 @@ namespace GamePlay.Character.Skills.Dictionaries
             { SkillTypes.QuantumBall, 30.0f },
             { SkillTypes.Swords, 12.0f },
             { SkillTypes.Mines, 18.0f },
-            { SkillTypes.SuperGuns, 22.0f },
             { SkillTypes.Turret, 27.0f },
             { SkillTypes.Vortex, 35.0f },
             { SkillTypes.Teleport, 5.0f },
@@ -41,6 +40,41 @@ namespace GamePlay.Character.Skills.Dictionaries
             { SkillTypes.SuperKiller, 40.0f }
         };
 
+        private Dictionary<SkillTypes, IBulletMovable> _bulletMover = new Dictionary<SkillTypes, IBulletMovable>()
+        {
+            {SkillTypes.None, null},
+            {SkillTypes.Arrow, null},
+            {SkillTypes.Fireball, null},
+            {SkillTypes.AimRockets, null},
+            {SkillTypes.Laser, null},
+            {SkillTypes.QuantumBall, null},
+            {SkillTypes.Swords, null},
+            {SkillTypes.Mines, null},
+            {SkillTypes.Turret, null},
+            {SkillTypes.Vortex, null},
+            {SkillTypes.Teleport, null},
+            {SkillTypes.Shield, null},
+            {SkillTypes.TimeStopper, null},
+            {SkillTypes.SuperKiller, null}
+        };
+        
+        private Dictionary<SkillTypes, SkillObjectConfig> _bulletConfig = new Dictionary<SkillTypes, SkillObjectConfig>()
+        {
+            {SkillTypes.None, null},
+            {SkillTypes.Arrow, null},
+            {SkillTypes.Fireball, null},
+            {SkillTypes.AimRockets, null},
+            {SkillTypes.Laser, null},
+            {SkillTypes.QuantumBall, null},
+            {SkillTypes.Swords, null},
+            {SkillTypes.Mines, null},
+            {SkillTypes.Turret, null},
+            {SkillTypes.Vortex, null},
+            {SkillTypes.Teleport, null},
+            {SkillTypes.Shield, null},
+            {SkillTypes.TimeStopper, null},
+            {SkillTypes.SuperKiller, null}
+        };
         public Dictionary<SkillTypes, float> SkillsDamage
         {
             get => _skillsDamage;
@@ -50,6 +84,16 @@ namespace GamePlay.Character.Skills.Dictionaries
         {
             get => _skillsReloadTimer;
             set => _skillsReloadTimer = value;
+        }
+        public Dictionary<SkillTypes, IBulletMovable> BulletMover
+        {
+            get => _bulletMover;
+            set => _bulletMover = value;
+        }
+        public Dictionary<SkillTypes, SkillObjectConfig> BulletConfig
+        {
+            get => _bulletConfig;
+            set => _bulletConfig = value;
         }
         
     }

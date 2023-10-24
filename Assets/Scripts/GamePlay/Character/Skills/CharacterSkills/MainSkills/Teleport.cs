@@ -1,12 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
+using GamePlay.Character.Skills.Dictionaries;
+using GamePlay.Character.Skills.Interface;
 using UnityEngine;
 
-public class Teleport : ISkillUsable
+namespace GamePlay.Character.Skills.CharacterSkills.MainSkills
 {
-    public void UseSkill()
+    public class Teleport : ISkillUsable
     {
-        Debug.Log("Teleport");
-        //TODO MAKE SKILL LOGIC
+        private Rigidbody _rigidBody;
+        
+        private const float TeleportDistance = 5f;
+        
+        public void UseSkill(GameObject character,SkillDictionaries skillDictionaries, SkillsConfig skillConfig)
+        {
+            _rigidBody = character.GetComponent<Rigidbody>();
+            
+            Vector3 moveDirection = _rigidBody.velocity.normalized;
+            Vector3 newPosition = _rigidBody.position + moveDirection * TeleportDistance;
+            _rigidBody.MovePosition(newPosition);
+        }
     }
 }

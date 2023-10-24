@@ -1,8 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
+using GamePlay.Bullets;
+using GamePlay.Bullets.Movers;
+using GamePlay.Character.Skills.Dictionaries;
+using GamePlay.Character.Skills.Interface;
+using GamePlay.Level;
 using UnityEngine;
 
-public class AimRockets : MonoBehaviour
+namespace GamePlay.Character.Skills.CharacterSkills.ShootSkills
 {
-    //TODO MAKE SKILL LOGIC
+    public class AimRockets : ISkillUsable
+    {
+        private SkillTypes _skillTypes = SkillTypes.AimRockets;
+        private IBulletMovable _mover = new AimedBullet();
+        
+        public void UseSkill(GameObject character,SkillDictionaries skillDictionaries, SkillsConfig skillConfig)
+        {
+            Shoot shoot = new Shoot();
+            shoot.Shot(character, _mover, _skillTypes, skillConfig);
+
+        }
+    }
 }
+

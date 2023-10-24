@@ -1,8 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
+using GamePlay.Character.Skills.Dictionaries;
+using GamePlay.Character.Skills.Interface;
+using GamePlay.Level;
 using UnityEngine;
 
-public class Mines : MonoBehaviour
+namespace GamePlay.Character.Skills.CharacterSkills.SupportSkills
 {
-    //TODO MAKE SKILL LOGIC
+    public class Mines : ISkillUsable
+    {
+        public void UseSkill(GameObject character,SkillDictionaries skillDictionaries, SkillsConfig skillConfig)
+        {
+            ObjectContainer objectContainer = ObjectContainer.InstanceObjectContainer;
+            GameObject mine = objectContainer.Mines.GetFreeElement();
+            mine.transform.position = character.transform.position;
+        }
+
+    }
 }

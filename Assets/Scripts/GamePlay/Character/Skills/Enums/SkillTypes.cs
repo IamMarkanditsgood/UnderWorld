@@ -12,7 +12,6 @@ public enum SkillTypes
     QuantumBall,
     Swords,
     Mines,
-    SuperGuns,
     Turret,
     Vortex,
     Teleport,

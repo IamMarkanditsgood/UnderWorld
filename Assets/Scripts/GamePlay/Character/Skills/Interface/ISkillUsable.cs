@@ -1,8 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
+using GamePlay.Character.Skills.Dictionaries;
 using UnityEngine;
 
-public interface ISkillUsable
+namespace GamePlay.Character.Skills.Interface
 {
-    public void UseSkill();
+    public interface ISkillUsable
+    {
+        public void UseSkill(GameObject character,SkillDictionaries skillDictionaries, SkillsConfig skillsConfig);
+    }
 }

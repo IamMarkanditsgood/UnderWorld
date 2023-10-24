@@ -13,7 +13,7 @@ namespace GamePlay.Character.Components
 
         private Transform _character;
         
-        public void InitialData(Transform character)
+        public void InitData(Transform character)
         {
             _character = character;
         }

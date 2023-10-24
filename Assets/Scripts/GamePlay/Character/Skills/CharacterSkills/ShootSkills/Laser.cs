@@ -1,8 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
+using GamePlay.Character.Skills.Dictionaries;
+using GamePlay.Character.Skills.Interface;
 using UnityEngine;
 
-public class Laser : MonoBehaviour
+namespace GamePlay.Character.Skills.CharacterSkills.ShootSkills
 {
-    //TODO MAKE SKILL LOGIC
+    public class Laser : ISkillUsable
+    {
+        private SkillTypes _skillTypes = SkillTypes.AimRockets;
+        
+
+  
+        public void UseSkill(GameObject character, SkillDictionaries skillDictionaries, SkillsConfig skillsConfig)
+        {
+            //TODO Later 
+        }
+    }
 }

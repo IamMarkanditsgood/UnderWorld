@@ -1,3 +1,5 @@
+using GamePlay.Bullets;
+using GamePlay.Level.ScriptableObjects;
 using UnityEngine;
 
 namespace GamePlay.Character.Skills
@@ -6,7 +8,9 @@ namespace GamePlay.Character.Skills
     public class SkillsConfig : ScriptableObject
     {
         [SerializeField] private GameObject _skillSound;
+        [SerializeField] private SkillObjectConfig _skillObjectConfig;
         
         public GameObject SkillSound => _skillSound;
+        public SkillObjectConfig SkillObjectConfig => _skillObjectConfig;
     }
 }

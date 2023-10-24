@@ -1,8 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
+using GamePlay.Bullets;
+using GamePlay.Bullets.Movers;
+using GamePlay.Character;
+using GamePlay.Character.Skills;
+using GamePlay.Character.Skills.Dictionaries;
+using GamePlay.Character.Skills.Interface;
+using GamePlay.Level;
 using UnityEngine;
 
-public class Fireball : MonoBehaviour
+public class Fireball : ISkillUsable
 {
-    //TODO MAKE SKILL LOGIC
+    private SkillTypes _skillTypes = SkillTypes.Fireball;
+    private IBulletMovable _mover = new StandardBullet();
+        
+    public void UseSkill(GameObject character,SkillDictionaries skillDictionaries, SkillsConfig skillConfig)
+    {
+        Shoot shoot = new Shoot();
+        shoot.Shot(character, _mover, _skillTypes, skillConfig);
+
+    }
 }

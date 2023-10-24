@@ -1,5 +1,7 @@
 using System;
 using GamePlay.Character.Skills.Dictionaries;
+using GamePlay.Character.Skills.Interface;
+using TMPro;
 using UnityEngine;
 
 namespace GamePlay.Character.Skills
@@ -21,7 +23,7 @@ namespace GamePlay.Character.Skills
         public SkillData MainSkillData => _mainSkillData;
         public SkillDictionaries SkillDictionaries => _skillDictionaries;
         
-        public void SetInitialSkillsData(SkillTypes initialMainSkill,SkillTypes initialShootSkill,SkillTypes initialSupportSkill, ISkillUsable mainSkillScript, ISkillUsable shootSkillScript,ISkillUsable supportSkillScript)
+        public void SetInitSkillsData(SkillTypes initialMainSkill,SkillTypes initialShootSkill,SkillTypes initialSupportSkill, ISkillUsable mainSkillScript, ISkillUsable shootSkillScript,ISkillUsable supportSkillScript)
         {
             _mainSkillData.SkillTypes = initialMainSkill;
             _mainSkillData.Skill = mainSkillScript;
@@ -35,9 +37,18 @@ namespace GamePlay.Character.Skills
             _supportkillData.Skill = supportSkillScript;
             _supportkillData.SkillsConfig = _supportSkillScriptableObject;
         }
-        public void UseSkill(ISkillUsable skill)
+        public void UseMainSkill(GameObject character)
         {
-            skill.UseSkill();
+            _mainSkillData.Skill.UseSkill(character, _skillDictionaries, _mainSkillScriptableObject);
         }
+        public void UseShootSkill(GameObject character)
+        {
+            _shootskillData.Skill.UseSkill(character, _skillDictionaries, _shootSkillScriptableObject);
+        }
+        public void UseSupportSkill(GameObject character)
+        {
+            _supportkillData.Skill.UseSkill(character, _skillDictionaries, _supportSkillScriptableObject);
+        }
+        
     }
 }

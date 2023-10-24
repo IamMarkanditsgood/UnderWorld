@@ -1,8 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
+using GamePlay.Character.Skills.Dictionaries;
+using GamePlay.Character.Skills.Interface;
+using GamePlay.Level;
 using UnityEngine;
 
-public class Turret : MonoBehaviour
+namespace GamePlay.Character.Skills.CharacterSkills.SupportSkills
 {
-    //TODO MAKE SKILL LOGIC
+    public class Turret : ISkillUsable
+    {
+        public void UseSkill(GameObject character,SkillDictionaries skillDictionaries, SkillsConfig skillConfig)
+        {
+            ObjectContainer objectContainer = ObjectContainer.InstanceObjectContainer;
+            GameObject turret = objectContainer.Turrets.GetFreeElement();
+            turret.transform.position = character.transform.position;
+        }
+
+    }
 }

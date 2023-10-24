@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Arrow
   m_EditorClassIdentifier: 
   _skillSound: {fileID: 0}
+  _skillObjectConfig: {fileID: 11400000, guid: fcad59da36bff7045be3011544abae74, type: 2}

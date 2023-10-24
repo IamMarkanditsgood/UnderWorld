@@ -1,3 +1,5 @@
+using GamePlay.Character.Skills.Interface;
+
 namespace GamePlay.Character.Skills
 {
     public class SkillData 
