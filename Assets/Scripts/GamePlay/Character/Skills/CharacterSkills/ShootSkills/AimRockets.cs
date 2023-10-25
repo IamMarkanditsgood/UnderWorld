@@ -10,7 +10,7 @@ namespace GamePlay.Character.Skills.CharacterSkills.ShootSkills
     public class AimRockets : ISkillUsable
     {
         private SkillTypes _skillTypes = SkillTypes.AimRockets;
-        private IBulletMovable _mover = new AimedBullet();
+        private BaseMover _mover = new AimedBullet();
         
         public void UseSkill(GameObject character,SkillDictionaries skillDictionaries, SkillsConfig skillConfig)
         {

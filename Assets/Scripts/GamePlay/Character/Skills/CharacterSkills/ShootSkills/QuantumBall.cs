@@ -10,7 +10,7 @@ namespace GamePlay.Character.Skills.CharacterSkills.ShootSkills
     public class QuantumBall : ISkillUsable
     {
         private SkillTypes _skillTypes = SkillTypes.QuantumBall;
-        private IBulletMovable _mover = new StandardBullet();
+        private BaseMover _mover = new StandardBullet();
         
         public void UseSkill(GameObject character,SkillDictionaries skillDictionaries, SkillsConfig skillConfig)
         {

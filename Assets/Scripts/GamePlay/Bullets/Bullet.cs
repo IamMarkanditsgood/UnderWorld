@@ -1,4 +1,5 @@
 using System;
+using GamePlay.Bullets.Movers;
 using GamePlay.Level;
 using UnityEngine;
 
@@ -9,17 +10,17 @@ namespace GamePlay.Bullets
         [SerializeField] private SkillTypes _skillTypes;
         [SerializeField] private SkillObjectConfig _skillObjectConfig;
 
-        private IBulletMovable _bulletMover;
+        private BaseMover _bulletMover;
         
         
-        public void InitBullet(SkillTypes bulletTypes, IBulletMovable mover,SkillObjectConfig skillObjectConfig)
+        public void InitBullet(SkillTypes bulletTypes, BaseMover mover,SkillObjectConfig skillObjectConfig)
         {
             _skillTypes = bulletTypes;
             _bulletMover = mover;
             _skillObjectConfig = skillObjectConfig;
 
         }
-        private void FixedUpdate()
+        private void Update()
         {     
             _bulletMover.Move(gameObject, _skillObjectConfig.Speed );
         }

@@ -4,14 +4,14 @@ using UnityEngine;
 
 namespace GamePlay.Bullets.Movers
 {
-    public class AimedBullet : IBulletMovable
+    public class AimedBullet : BaseMover
     {
         private ObjectContainer _objectContainer;
         private List<GameObject> _enemiesPool;
-        public void Move(GameObject bullet, float speed)
+        public override void Move(GameObject bullet, float speed)
         {
             _objectContainer = ObjectContainer.InstanceObjectContainer;
-            bullet.transform.Translate(Vector3.forward  * speed * Time.fixedDeltaTime);
+            base.Move(bullet, speed);
             
             _enemiesPool = _objectContainer.Enemies.EnabledPool;
             GameObject enemy = GetClosestEnemy(bullet, _enemiesPool);

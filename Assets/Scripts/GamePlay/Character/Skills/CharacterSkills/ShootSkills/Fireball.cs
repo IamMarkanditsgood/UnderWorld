@@ -1,23 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using GamePlay.Bullets;
 using GamePlay.Bullets.Movers;
-using GamePlay.Character;
-using GamePlay.Character.Skills;
 using GamePlay.Character.Skills.Dictionaries;
 using GamePlay.Character.Skills.Interface;
-using GamePlay.Level;
 using UnityEngine;
 
-public class Fireball : ISkillUsable
+namespace GamePlay.Character.Skills.CharacterSkills.ShootSkills
 {
-    private SkillTypes _skillTypes = SkillTypes.Fireball;
-    private IBulletMovable _mover = new StandardBullet();
-        
-    public void UseSkill(GameObject character,SkillDictionaries skillDictionaries, SkillsConfig skillConfig)
+    public class Fireball : ISkillUsable
     {
-        Shoot shoot = new Shoot();
-        shoot.Shot(character, _mover, _skillTypes, skillConfig);
+        private SkillTypes _skillTypes = SkillTypes.Fireball;
+        private BaseMover _mover = new StandardBullet();
+        
+        public void UseSkill(GameObject character,SkillDictionaries skillDictionaries, SkillsConfig skillConfig)
+        {
+            Shoot shoot = new Shoot();
+            shoot.Shot(character, _mover, _skillTypes, skillConfig);
 
+        }
     }
 }

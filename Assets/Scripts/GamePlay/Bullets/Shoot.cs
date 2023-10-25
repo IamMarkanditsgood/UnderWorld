@@ -1,3 +1,4 @@
+using GamePlay.Bullets.Movers;
 using GamePlay.Character.Skills;
 using GamePlay.Level;
 using UnityEngine;
@@ -6,10 +7,10 @@ namespace GamePlay.Bullets
 {
     public class Shoot
     {
-        public void Shot(GameObject character, IBulletMovable mover,SkillTypes skillTypes, SkillsConfig skillConfig )
+        public void Shot(GameObject character, BaseMover mover,SkillTypes skillTypes, SkillsConfig skillConfig )
         {
             ObjectContainer objectContainer = ObjectContainer.InstanceObjectContainer;
-            Transform bulletPos = character.GetComponent<Character.Character>().ShootingSkillPos;// change alhoritm
+            Transform bulletPos = character.GetComponent<Character.Character>().ShootingSkillPos;
             
             GameObject bullet = objectContainer.Bullets.GetFreeElement();
             bullet.transform.position = bulletPos.position;

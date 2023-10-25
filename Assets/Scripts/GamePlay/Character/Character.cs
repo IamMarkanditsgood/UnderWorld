@@ -35,9 +35,7 @@ namespace GamePlay.Character
         {
             _skillsManager.SkillDictionaries.SkillsDamage = _initialSkillsConfig.SkillsDamage;
             _skillsManager.SkillDictionaries.SkillsReloadTimer = _initialSkillsConfig.SkillsReloadTimer;
-            _skillsManager.SkillDictionaries.BulletMover = _initialSkillsConfig.BulletMover;
-            _skillsManager.SkillDictionaries.BulletConfig = _initialSkillsConfig.BulletConfigs;
-            
+
             _rotationManager.InitData(_characterBody.transform);
             
             _skillsManager.SetInitSkillsData(SkillTypes.Teleport, SkillTypes.Arrow, SkillTypes.Swords, new Teleport(), new Arrow(), new Swords());
