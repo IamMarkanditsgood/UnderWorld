@@ -38,43 +38,19 @@ namespace GamePlay.Character
             _skillsManager.SkillDictionaries.BulletMover = _initialSkillsConfig.BulletMover;
             _skillsManager.SkillDictionaries.BulletConfig = _initialSkillsConfig.BulletConfigs;
 
-            _skillsManager.SetSkill(InputSkillVariable.Shift, SkillTypes.Teleport, new Teleport());
-            _skillsManager.SetSkill(InputSkillVariable.LeftButtonMouse, SkillTypes.Arrow, new Arrow());
-            _skillsManager.SetSkill(InputSkillVariable.RightButtonMouse, SkillTypes.Swords, new Swords());
+            InitSkills();
             _rotationManager.InitData(_characterBody.transform);
 
-            _inputController.OnMoveButtonsPressed += MoveCharacter;
-            _inputController.OnShiftPressed += OnShiftSkill;
-            _inputController.OnLeftButtonMousePressed += OnLeftButtonMouseSkill;
-            _inputController.OnRightButtonMousePressed += OnRightButtonMouseSkill;
-            _inputController.OnEPressed += Epressed;
-        }
-
-        private void OnShiftSkill()
-        {
-            _skillsManager.Skills[InputSkillVariable.Shift].UseSkill(_characterBody);
-        }
-
-        private void OnLeftButtonMouseSkill()
-        {
-            _skillsManager.Skills[InputSkillVariable.LeftButtonMouse].UseSkill(_characterBody);
-        }
-
-        private void OnRightButtonMouseSkill()
-        {
-            _skillsManager.Skills[InputSkillVariable.RightButtonMouse].UseSkill(_characterBody);
+            Subscribes();
         }
 
         private void Update()
         {
             _rotationManager.MoveRotationTarget();
+            _rotationManager.RotateCharacter();
+
             _inputController.CheckKeyboardKeys();
             _inputController.CheckMouseKeys();
-        }
-
-        private void FixedUpdate()
-        {
-            _rotationManager.RotateCharacter();
         }
 
         private void OnTriggerEnter(Collider other)
@@ -95,25 +71,56 @@ namespace GamePlay.Character
 
         private void OnDestroy()
         {
-            _inputController.OnMoveButtonsPressed -= MoveCharacter;
-            _inputController.OnShiftPressed -= OnShiftSkill;
-            _inputController.OnLeftButtonMousePressed -= OnLeftButtonMouseSkill;
-            _inputController.OnRightButtonMousePressed -= OnRightButtonMouseSkill;
-            _inputController.OnEPressed -= Epressed;
+            Unsubscribe();
         }
 
-        private void MoveCharacter(Vector2 movementDirection)
+        private void InitSkills()
         {
-            _movementManager.MoveCharacter(movementDirection, _rigidbody);
+            _skillsManager.SetSkill(InputSkillVariable.Shift, SkillTypes.Teleport, new Teleport());
+            _skillsManager.SetSkill(InputSkillVariable.LeftButtonMouse, SkillTypes.Arrow, new Arrow());
+            _skillsManager.SetSkill(InputSkillVariable.RightButtonMouse, SkillTypes.Swords, new Swords());
         }
 
-        private void Epressed()
+        private void OnShiftSkill() =>
+            _skillsManager.Skills[InputSkillVariable.Shift].UseSkill(_characterBody);
+        
+
+        private void OnLeftButtonMouseSkill() =>
+            _skillsManager.Skills[InputSkillVariable.LeftButtonMouse].UseSkill(_characterBody);
+        
+
+        private void OnRightButtonMouseSkill() =>
+            _skillsManager.Skills[InputSkillVariable.RightButtonMouse].UseSkill(_characterBody);
+        
+
+        private void EPressed()
         {
             if (_interactionControl.CurrentInteractableObject != null)
             {
                 _interactionControl.InteractWithEnvironment(_interactionControl.CurrentInteractableObject);
                 _interactionControl.CurrentInteractableObject = null;
             }
+        }
+        private void MoveCharacter(Vector2 movementDirection)
+        {
+            _movementManager.MoveCharacter(movementDirection, _rigidbody);
+        }
+        private void Subscribes()
+        {
+            _inputController.OnMoveButtonsPressed += MoveCharacter;
+            _inputController.OnShiftPressed += OnShiftSkill;
+            _inputController.OnLeftButtonMousePressed += OnLeftButtonMouseSkill;
+            _inputController.OnRightButtonMousePressed += OnRightButtonMouseSkill;
+            _inputController.OnEPressed += EPressed;
+        }
+
+        private void Unsubscribe()
+        {
+            _inputController.OnMoveButtonsPressed -= MoveCharacter;
+            _inputController.OnShiftPressed -= OnShiftSkill;
+            _inputController.OnLeftButtonMousePressed -= OnLeftButtonMouseSkill;
+            _inputController.OnRightButtonMousePressed -= OnRightButtonMouseSkill;
+            _inputController.OnEPressed -= EPressed;
         }
     }
 }
