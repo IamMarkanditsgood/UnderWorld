@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using GamePlay.Character.Components;
 using GamePlay.Character.Skills;
 using GamePlay.Character.Skills.CharacterSkills.MainSkills;
@@ -21,32 +22,47 @@ namespace GamePlay.Character
         [SerializeField] private GameObject _swords;
         [SerializeField] private GameObject _vortex;
         [SerializeField] private Transform _shootingSkillPos;
-        
         private readonly InputController _inputController = new();
-        
+
         private const string InteractableKey = "Interactable";
 
         public GameObject Shield => _shield;
         public GameObject Swords => _swords;
         public GameObject Vortex => _vortex;
         public Transform ShootingSkillPos => _shootingSkillPos;
-        
+
         private void Awake()
         {
             _skillsManager.SkillDictionaries.SkillsDamage = _initialSkillsConfig.SkillsDamage;
             _skillsManager.SkillDictionaries.SkillsReloadTimer = _initialSkillsConfig.SkillsReloadTimer;
             _skillsManager.SkillDictionaries.BulletMover = _initialSkillsConfig.BulletMover;
             _skillsManager.SkillDictionaries.BulletConfig = _initialSkillsConfig.BulletConfigs;
-            
+
+            _skillsManager.SetSkill(InputSkillVariable.Shift, SkillTypes.Teleport, new Teleport());
+            _skillsManager.SetSkill(InputSkillVariable.LeftButtonMouse, SkillTypes.Arrow, new Arrow());
+            _skillsManager.SetSkill(InputSkillVariable.RightButtonMouse, SkillTypes.Swords, new Swords());
             _rotationManager.InitData(_characterBody.transform);
-            
-            _skillsManager.SetInitSkillsData(SkillTypes.Teleport, SkillTypes.Arrow, SkillTypes.Swords, new Teleport(), new Arrow(), new Swords());
-            
+
             _inputController.OnMoveButtonsPressed += MoveCharacter;
-            _inputController.OnShiftPressed += () => _skillsManager.UseMainSkill(_characterBody);
-            _inputController.OnLeftButtonMousePressed += () => _skillsManager.UseShootSkill(_characterBody);    
-            _inputController.OnRightButtonMousePressed += () => _skillsManager.UseSupportSkill(_characterBody);
+            _inputController.OnShiftPressed += OnShiftSkill;
+            _inputController.OnLeftButtonMousePressed += OnLeftButtonMouseSkill;
+            _inputController.OnRightButtonMousePressed += OnRightButtonMouseSkill;
             _inputController.OnEPressed += Epressed;
+        }
+
+        private void OnShiftSkill()
+        {
+            _skillsManager.Skills[InputSkillVariable.Shift].UseSkill(_characterBody);
+        }
+
+        private void OnLeftButtonMouseSkill()
+        {
+            _skillsManager.Skills[InputSkillVariable.LeftButtonMouse].UseSkill(_characterBody);
+        }
+
+        private void OnRightButtonMouseSkill()
+        {
+            _skillsManager.Skills[InputSkillVariable.RightButtonMouse].UseSkill(_characterBody);
         }
 
         private void Update()
@@ -60,7 +76,7 @@ namespace GamePlay.Character
         {
             _rotationManager.RotateCharacter();
         }
-        
+
         private void OnTriggerEnter(Collider other)
         {
             if (other.gameObject.layer == LayerMask.NameToLayer(InteractableKey))
@@ -68,7 +84,7 @@ namespace GamePlay.Character
                 _interactionControl.CurrentInteractableObject = other.gameObject;
             }
         }
-        
+
         private void OnTriggerExit(Collider other)
         {
             if (other.gameObject.layer == LayerMask.NameToLayer(InteractableKey))
@@ -76,13 +92,13 @@ namespace GamePlay.Character
                 _interactionControl.CurrentInteractableObject = null;
             }
         }
-        
+
         private void OnDestroy()
         {
             _inputController.OnMoveButtonsPressed -= MoveCharacter;
-            _inputController.OnShiftPressed -= () => _skillsManager.UseMainSkill(_characterBody);
-            _inputController.OnLeftButtonMousePressed -= () => _skillsManager.UseShootSkill(_characterBody);
-            _inputController.OnRightButtonMousePressed -= () => _skillsManager.UseSupportSkill(_characterBody);
+            _inputController.OnShiftPressed -= OnShiftSkill;
+            _inputController.OnLeftButtonMousePressed -= OnLeftButtonMouseSkill;
+            _inputController.OnRightButtonMousePressed -= OnRightButtonMouseSkill;
             _inputController.OnEPressed -= Epressed;
         }
 
@@ -90,7 +106,7 @@ namespace GamePlay.Character
         {
             _movementManager.MoveCharacter(movementDirection, _rigidbody);
         }
-        
+
         private void Epressed()
         {
             if (_interactionControl.CurrentInteractableObject != null)

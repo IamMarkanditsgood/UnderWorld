@@ -15,7 +15,7 @@ namespace GamePlay.Character.Skills.CharacterSkills.SupportSkills
         private const int SwordsTime = 2;
         private const int SecondsByMillisecond = 1000;
 
-        public async void UseSkill(GameObject character,SkillDictionaries skillDictionaries, SkillsConfig skillConfig)
+        public async void UseSkill(GameObject character,SkillDictionaries skillDictionaries, SkillConfig skillConfig)
         {
             if (!_inUse)
             {

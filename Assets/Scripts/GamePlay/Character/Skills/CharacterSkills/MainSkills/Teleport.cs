@@ -10,7 +10,7 @@ namespace GamePlay.Character.Skills.CharacterSkills.MainSkills
         
         private const float TeleportDistance = 5f;
         
-        public void UseSkill(GameObject character,SkillDictionaries skillDictionaries, SkillsConfig skillConfig)
+        public void UseSkill(GameObject character,SkillDictionaries skillDictionaries, SkillConfig skillConfig)
         {
             _rigidBody = character.GetComponent<Rigidbody>();
             

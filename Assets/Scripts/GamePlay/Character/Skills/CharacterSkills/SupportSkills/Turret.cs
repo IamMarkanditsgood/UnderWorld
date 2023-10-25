@@ -7,7 +7,7 @@ namespace GamePlay.Character.Skills.CharacterSkills.SupportSkills
 {
     public class Turret : ISkillUsable
     {
-        public void UseSkill(GameObject character,SkillDictionaries skillDictionaries, SkillsConfig skillConfig)
+        public void UseSkill(GameObject character,SkillDictionaries skillDictionaries, SkillConfig skillConfig)
         {
             ObjectContainer objectContainer = ObjectContainer.InstanceObjectContainer;
             GameObject turret = objectContainer.Turrets.GetFreeElement();

@@ -10,7 +10,7 @@ namespace GamePlay.Character.Skills.CharacterSkills.ShootSkills
         
 
   
-        public void UseSkill(GameObject character, SkillDictionaries skillDictionaries, SkillsConfig skillsConfig)
+        public void UseSkill(GameObject character, SkillDictionaries skillDictionaries, SkillConfig skillConfig)
         {
             //TODO Later 
         }

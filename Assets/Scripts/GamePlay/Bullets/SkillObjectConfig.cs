@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace GamePlay.Bullets
 {
-    [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/SkillObjectScriptableObject", order = 1)]
+    [CreateAssetMenu(fileName = "SkillObject", menuName = "ScriptableObjects/SkillObject", order = 1)]
     public class SkillObjectConfig : ScriptableObject
     {
         [SerializeField] private GameObject _sound;

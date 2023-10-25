@@ -6,7 +6,7 @@ namespace GamePlay.Bullets
 {
     public class Shoot
     {
-        public void Shot(GameObject character, IBulletMovable mover,SkillTypes skillTypes, SkillsConfig skillConfig )
+        public void Shot(GameObject character, IBulletMovable mover,SkillTypes skillTypes, SkillConfig skillConfig )
         {
             ObjectContainer objectContainer = ObjectContainer.InstanceObjectContainer;
             Transform bulletPos = character.GetComponent<Character.Character>().ShootingSkillPos;// change alhoritm

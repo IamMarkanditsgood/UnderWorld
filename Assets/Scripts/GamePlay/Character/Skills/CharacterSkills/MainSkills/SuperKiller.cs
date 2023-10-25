@@ -9,7 +9,7 @@ namespace GamePlay.Character.Skills.CharacterSkills.MainSkills
     public class SuperKiller : MonoBehaviour, ISkillUsable
     {
         private ObjectContainer _objectContainer;
-        public void UseSkill(GameObject character, SkillDictionaries skillDictionaries, SkillsConfig skillConfig)
+        public void UseSkill(GameObject character, SkillDictionaries skillDictionaries, SkillConfig skillConfig)
         {
             _objectContainer = ObjectContainer.InstanceObjectContainer;
             List<GameObject> enemiesEnabledPool = _objectContainer.Enemies.EnabledPool;
