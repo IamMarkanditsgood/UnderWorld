@@ -9,7 +9,7 @@ namespace GamePlay.Character.Skills.CharacterSkills.SupportSkills
 {
     public class Mines : ISkillUsable
     {
-        public void UseSkill(GameObject character,SkillDictionaries skillDictionaries, SkillsConfig skillConfig)
+        public void UseSkill(GameObject character,SkillDictionaries skillDictionaries, SkillConfig skillConfig)
         {
             ObjectContainer objectContainer = ObjectContainer.InstanceObjectContainer;
             GameObject mine = objectContainer.Mines.GetFreeElement();

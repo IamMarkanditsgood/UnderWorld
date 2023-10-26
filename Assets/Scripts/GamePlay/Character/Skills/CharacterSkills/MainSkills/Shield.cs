@@ -16,7 +16,7 @@ namespace GamePlay.Character.Skills.CharacterSkills.MainSkills
         private const int ShieldTime = 5;
         private const int SecondsByMillisecond = 1000;
 
-        public async void UseSkill(GameObject character,SkillDictionaries skillDictionaries, SkillsConfig skillConfig)
+        public async void UseSkill(GameObject character,SkillDictionaries skillDictionaries, SkillConfig skillConfig)
         {
             if (!_inUse)
             {

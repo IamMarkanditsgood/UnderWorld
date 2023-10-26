@@ -13,7 +13,7 @@ namespace GamePlay.Character.Skills.CharacterSkills.MainSkills
         private const int SecondsByMillisecond = 1000;
     
         private CancellationTokenSource _cancellationTokenSource = new();
-        public async void UseSkill(GameObject character, SkillDictionaries skillDictionaries, SkillsConfig skillConfig)
+        public async void UseSkill(GameObject character, SkillDictionaries skillDictionaries, SkillConfig skillConfig)
         {
             Time.timeScale = 0.2f;
             await ShieldTimer(_cancellationTokenSource.Token);
