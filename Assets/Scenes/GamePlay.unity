@@ -123,6 +123,55 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &293267041
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 293267043}
+  - component: {fileID: 293267042}
+  m_Layer: 0
+  m_Name: Standart
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &293267042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293267041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a3c67a4261ed3a4bb081496cd568cb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _key: Standart
+  _prefab: {fileID: 7468076025091679961, guid: 30b8ad48baf80ab4f9fd17b176664ad8, type: 3}
+  _isUsedDiContainer: 0
+  _startCount: 5
+  _container: {fileID: 293267043}
+--- !u!4 &293267043
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293267041}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1244606138}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &316269490
 GameObject:
   m_ObjectHideFlags: 0
@@ -132,6 +181,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 316269491}
+  - component: {fileID: 316269492}
   m_Layer: 0
   m_Name: Turrets
   m_TagString: Untagged
@@ -154,6 +204,23 @@ Transform:
   m_Father: {fileID: 1774890002}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &316269492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 316269490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a3c67a4261ed3a4bb081496cd568cb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _key: Turret
+  _prefab: {fileID: 2410467437351613677, guid: 18a4bf38091902f4a81072ba61bbb776, type: 3}
+  _isUsedDiContainer: 0
+  _startCount: 5
+  _container: {fileID: 316269491}
 --- !u!1 &575687384
 GameObject:
   m_ObjectHideFlags: 0
@@ -194,6 +261,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 917761565}
+  - component: {fileID: 917761566}
   m_Layer: 0
   m_Name: Bullets
   m_TagString: Untagged
@@ -215,6 +283,88 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1774890002}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &917761566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 917761564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a3c67a4261ed3a4bb081496cd568cb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _key: Bullet
+  _prefab: {fileID: 1124475506644554968, guid: 33df8bfda41b067478716a4587d9280b, type: 3}
+  _isUsedDiContainer: 0
+  _startCount: 5
+  _container: {fileID: 917761565}
+--- !u!1 &1070498482
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1070498484}
+  - component: {fileID: 1070498483}
+  m_Layer: 0
+  m_Name: SceneContext
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1070498483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1070498482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89715ad69b973a14899afa2c6730b30b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scriptableObjectInstallers: []
+  _monoInstallers:
+  - {fileID: 1988351619}
+  _installerPrefabs: []
+  _autoRun: 1
+  OnPreInstall:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPostInstall:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPreResolve:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPostResolve:
+    m_PersistentCalls:
+      m_Calls: []
+  _parentNewObjectsUnderSceneContext: 0
+  _contractNames: []
+  _parentContractNames: []
+--- !u!4 &1070498484
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1070498482}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1988351620}
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1106598470
 GameObject:
@@ -464,7 +614,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1244606138}
   m_Layer: 0
-  m_Name: EnemyContainer
+  m_Name: Enemies
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -481,7 +631,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 293267043}
   m_Father: {fileID: 1774890002}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -518,9 +669,9 @@ MonoBehaviour:
   _prefabContainer: {fileID: 11400000, guid: 00bdc7c79b579954e8f8d80cb1b292d1, type: 2}
   _objectContainer: {fileID: 1264359449}
   _enemyContainer: {fileID: 1244606138}
-  _bulletsContainer: {fileID: 917761565}
-  _minesContainer: {fileID: 1323502966}
-  _turretContainer: {fileID: 316269491}
+  _bulletsContainer: {fileID: 0}
+  _minesContainer: {fileID: 0}
+  _turretContainer: {fileID: 0}
 --- !u!114 &1264359449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -533,11 +684,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3331432091c56f945891aaae8dd7edf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _countOfEnemyPool: 5
-  _countOfBullets: 5
-  _countOfMinesPool: 5
-  _countOfTurrets: 5
-  _levelController: {fileID: 1264359448}
 --- !u!4 &1264359451
 Transform:
   m_ObjectHideFlags: 0
@@ -562,6 +708,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1323502966}
+  - component: {fileID: 1323502967}
   m_Layer: 0
   m_Name: Mines
   m_TagString: Untagged
@@ -584,6 +731,23 @@ Transform:
   m_Father: {fileID: 1774890002}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1323502967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1323502965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a3c67a4261ed3a4bb081496cd568cb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _key: Mine
+  _prefab: {fileID: 5564262987486981678, guid: 4cc87ff95593fdf449859d193dd8fc55, type: 3}
+  _isUsedDiContainer: 0
+  _startCount: 5
+  _container: {fileID: 1323502966}
 --- !u!1 &1448592360
 GameObject:
   m_ObjectHideFlags: 0
@@ -734,6 +898,58 @@ Transform:
   - {fileID: 1112837111}
   m_Father: {fileID: 0}
   m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1988351618
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1988351620}
+  - component: {fileID: 1988351619}
+  m_Layer: 0
+  m_Name: Factories
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1988351619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1988351618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5636b9c070d7eb844aff1d283bc63de3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyPools:
+  - {fileID: 293267042}
+  _bulletsPools:
+  - {fileID: 917761566}
+  _minesPools:
+  - {fileID: 1323502967}
+  _turretsPools:
+  - {fileID: 316269492}
+--- !u!4 &1988351620
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1988351618}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1070498484}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2203995825934891433
 PrefabInstance:
