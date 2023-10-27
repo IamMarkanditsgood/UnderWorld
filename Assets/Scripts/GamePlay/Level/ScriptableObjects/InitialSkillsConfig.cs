@@ -11,10 +11,8 @@ namespace GamePlay.Level.ScriptableObjects
     {
         [SerializeField] private Dictionary<SkillTypes, float> _skillsDamage;
         [SerializeField] private Dictionary<SkillTypes, float> _skillsReloadTimer;
-        [SerializeField] private Dictionary<SkillTypes, SkillObjectConfig> _bulletConfigs;
 
         public Dictionary<SkillTypes, float> SkillsDamage => _skillsDamage;
         public Dictionary<SkillTypes, float> SkillsReloadTimer => _skillsDamage;
-        public Dictionary<SkillTypes, SkillObjectConfig> BulletConfigs => _bulletConfigs;
     }
 }

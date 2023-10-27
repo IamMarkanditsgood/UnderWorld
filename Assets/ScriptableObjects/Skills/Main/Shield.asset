@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab0eba60425903247995557e0f5638da, type: 3}
   m_Name: Shield
   m_EditorClassIdentifier: 
+  _skillTypes: 11
   _skillSound: {fileID: 0}
-  _bulletConfig: {fileID: 0}
+  _skillObjectConfig: {fileID: 0}

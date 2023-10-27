@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab0eba60425903247995557e0f5638da, type: 3}
   m_Name: QuantumBall
   m_EditorClassIdentifier: 
+  _skillTypes: 5
   _skillSound: {fileID: 0}
   _skillObjectConfig: {fileID: 11400000, guid: 347b578dc03b4d84c9b4ee693608160d, type: 2}

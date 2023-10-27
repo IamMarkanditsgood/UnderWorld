@@ -35,10 +35,8 @@ namespace GamePlay.Character
         {
             _skillsManager.SkillDictionaries.SkillsDamage = _initialSkillsConfig.SkillsDamage;
             _skillsManager.SkillDictionaries.SkillsReloadTimer = _initialSkillsConfig.SkillsReloadTimer;
-
             InitSkills();
             _rotationManager.InitData(_characterBody.transform);
-
             Subscribes();
         }
 
@@ -78,7 +76,6 @@ namespace GamePlay.Character
             _skillsManager.SetSkill(InputSkillVariable.LeftButtonMouse, SkillTypes.Arrow, new Arrow());
             _skillsManager.SetSkill(InputSkillVariable.RightButtonMouse, SkillTypes.Swords, new Swords());
         }
-
         private void OnShiftSkill() =>
             _skillsManager.Skills[InputSkillVariable.Shift].UseSkill(_characterBody);
         
@@ -89,8 +86,6 @@ namespace GamePlay.Character
 
         private void OnRightButtonMouseSkill() =>
             _skillsManager.Skills[InputSkillVariable.RightButtonMouse].UseSkill(_characterBody);
-        
-
         private void EPressed()
         {
             if (_interactionControl.CurrentInteractableObject != null)

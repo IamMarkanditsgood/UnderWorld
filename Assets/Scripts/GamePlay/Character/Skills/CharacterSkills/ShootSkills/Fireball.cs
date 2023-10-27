@@ -11,7 +11,7 @@ namespace GamePlay.Character.Skills.CharacterSkills.ShootSkills
         private SkillTypes _skillTypes = SkillTypes.Fireball;
         private BaseMover _mover = new StandardBullet();
         
-        public void UseSkill(GameObject character,SkillDictionaries skillDictionaries, SkillsConfig skillConfig)
+        public void UseSkill(GameObject character,SkillDictionaries skillDictionaries, SkillConfig skillConfig)
         {
             Shoot shoot = new Shoot();
             shoot.Shot(character, _mover, _skillTypes, skillConfig);

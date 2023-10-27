@@ -18,16 +18,15 @@ namespace GamePlay.Character.Skills
 
         public void SetSkill(InputSkillVariable inputSkillVariable, SkillTypes skillTypes, ISkillUsable skillUsable)
         {
-            SkillConfig skillConfig =
-                _skillCollection.MainSkills.FirstOrDefault(config => config.SkillTypes == skillTypes);
-            
+            SkillConfig skillConfig = _skillCollection.Skills.FirstOrDefault(config => config.SkillTypes == skillTypes);
+
             if (Skills.ContainsKey(inputSkillVariable))
             {
-                Skills[inputSkillVariable] = new Skill(skillUsable, skillConfig);
+                Skills[inputSkillVariable] = new Skill(skillUsable, skillConfig, SkillDictionaries);
             }
             else
             {
-                Skills.Add(inputSkillVariable, new Skill(skillUsable, skillConfig));
+                Skills.Add(inputSkillVariable, new Skill(skillUsable, skillConfig, SkillDictionaries));
             }
         }
     }

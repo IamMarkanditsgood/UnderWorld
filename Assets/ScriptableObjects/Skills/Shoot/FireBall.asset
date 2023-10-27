@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab0eba60425903247995557e0f5638da, type: 3}
   m_Name: FireBall
   m_EditorClassIdentifier: 
+  _skillTypes: 2
   _skillSound: {fileID: 0}
   _skillObjectConfig: {fileID: 11400000, guid: 90b17dbd36c2fe846bd2013196e7cd90, type: 2}
