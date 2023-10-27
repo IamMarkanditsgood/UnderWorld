@@ -38,13 +38,13 @@ namespace GamePlay.Character
 
             _rotationManager.InitData(_characterBody.transform);
             
-            _skillsManager.SetInitSkillsData(SkillTypes.Teleport, SkillTypes.Arrow, SkillTypes.Swords, new Teleport(), new Arrow(), new Swords());
+            _skillsManager.SetInitSkillsData(SkillTypes.Shield, SkillTypes.Arrow, SkillTypes.Swords, new Shield(), new Arrow(), new Swords());
             
             _inputController.OnMoveButtonsPressed += MoveCharacter;
-            _inputController.OnShiftPressed += () => _skillsManager.UseMainSkill(_characterBody);
-            _inputController.OnLeftButtonMousePressed += () => _skillsManager.UseShootSkill(_characterBody);    
-            _inputController.OnRightButtonMousePressed += () => _skillsManager.UseSupportSkill(_characterBody);
-            _inputController.OnEPressed += Epressed;
+            _inputController.OnShiftPressed += ShiftPressed;
+            _inputController.OnLeftButtonMousePressed += LeftButtonMousePressed ;
+            _inputController.OnRightButtonMousePressed += RightButtonMousePressed;
+            _inputController.OnEPressed += EPressed;
         }
 
         private void Update()
@@ -78,18 +78,31 @@ namespace GamePlay.Character
         private void OnDestroy()
         {
             _inputController.OnMoveButtonsPressed -= MoveCharacter;
-            _inputController.OnShiftPressed -= () => _skillsManager.UseMainSkill(_characterBody);
-            _inputController.OnLeftButtonMousePressed -= () => _skillsManager.UseShootSkill(_characterBody);
-            _inputController.OnRightButtonMousePressed -= () => _skillsManager.UseSupportSkill(_characterBody);
-            _inputController.OnEPressed -= Epressed;
+            _inputController.OnShiftPressed -= ShiftPressed;
+            _inputController.OnLeftButtonMousePressed -= LeftButtonMousePressed;
+            _inputController.OnRightButtonMousePressed -= RightButtonMousePressed;
+            _inputController.OnEPressed -= EPressed;
         }
 
         private void MoveCharacter(Vector2 movementDirection)
         {
             _movementManager.MoveCharacter(movementDirection, _rigidbody);
         }
-        
-        private void Epressed()
+        private void ShiftPressed()
+        {
+            _skillsManager.UseMainSkill(_characterBody);
+        }
+
+        private void LeftButtonMousePressed()
+        {
+            _skillsManager.UseShootSkill(_characterBody);
+        }
+
+        private void RightButtonMousePressed()
+        {
+            _skillsManager.UseSupportSkill(_characterBody);
+        }
+        private void EPressed()
         {
             if (_interactionControl.CurrentInteractableObject != null)
             {

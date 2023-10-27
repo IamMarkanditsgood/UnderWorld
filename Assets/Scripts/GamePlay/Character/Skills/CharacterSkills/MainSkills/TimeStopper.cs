@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace GamePlay.Character.Skills.CharacterSkills.MainSkills
 {
-    public class TimeStopper : MonoBehaviour, ISkillUsable, IDisposable
+    public class TimeStopper : ISkillUsable, IDisposable
     {
         private const int StopperTime = 5;
         private const int SecondsByMillisecond = 1000;
