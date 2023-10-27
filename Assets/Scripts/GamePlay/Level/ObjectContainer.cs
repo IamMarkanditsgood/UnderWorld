@@ -5,7 +5,7 @@ namespace GamePlay.Level
 {
     public class ObjectContainer : MonoBehaviour
     {
-        public static ObjectContainer InstanceObjectContainer;
+        /*public static ObjectContainer InstanceObjectContainer;
         [SerializeField] private int _countOfEnemyPool = 5;
         [SerializeField] private int _countOfBullets = 5;
         [SerializeField] private int _countOfMinesPool = 5;
@@ -39,13 +39,13 @@ namespace GamePlay.Level
         }
         private void Awake()
         {
-            InstanceObjectContainer = this;
+            /*InstanceObjectContainer = this;
             _enemies = new ObjectPool(_levelController.PrefabContainer.ZombieEnemyPrefab, _countOfEnemyPool, _levelController.EnemyContainer);
             _bullets = new ObjectPool(_levelController.PrefabContainer.Bullet, _countOfBullets, _levelController.BulletsContainer);
             _mines = new ObjectPool(_levelController.PrefabContainer.Mines, _countOfMinesPool,
                 _levelController.MinesContainer);
             _turrets = new ObjectPool(_levelController.PrefabContainer.Turrets, _countOfTurrets,
-                _levelController.TurretContainer);
-        }
+                _levelController.TurretContainer);#1#
+        }*/
     }
 }
