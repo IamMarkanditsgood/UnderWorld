@@ -1,29 +1,32 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using GamePlay.Character.Skills.Dictionaries;
-using GamePlay.Character.Skills.Interface;
+using GamePlay.Entities.Character.Skills.Interface;
 using GamePlay.Level;
 using UnityEngine;
 
-namespace GamePlay.Character.Skills.CharacterSkills.MainSkills
+namespace GamePlay.Entities.Character.Skills.CharacterSkills.MainSkills
 {
-    public class Shield : ISkillUsable, IDisposable
+    public class Shield : BaseSkillUsable, IDisposable
     {
-        private GameObject _shield;
         private bool _isUse;
         
+        private readonly GameObject _shield;
         private readonly CancellationTokenSource _cancellationTokenSource = new();
+        
 
-        public void UseSkill(GameObject character,SkillDictionaries skillDictionaries, SkillConfig skillConfig)
+        public Shield(GameObject shield)
+        {
+            _shield = shield;
+        }
+        public override async void UseSkill()
         {
             if (!_isUse)
             {
                 _isUse = true;
-                _shield = character.GetComponent<Character>().Shield;
                 _shield.SetActive(true);
 
-                 ShieldTimer(_cancellationTokenSource.Token);
+                await ShieldTimer(_cancellationTokenSource.Token);
             }
         }
 

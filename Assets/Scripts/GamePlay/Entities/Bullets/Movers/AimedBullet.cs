@@ -1,28 +1,28 @@
 using System.Collections.Generic;
-using GamePlay.Entities.Enemy;
+using GamePlay.Entities.Enemies;
 using GamePlay.Level;
 using UnityEngine;
 using Zenject;
 
-namespace GamePlay.Bullets.Movers
+namespace GamePlay.Entities.Bullets.Movers
 {
     public class AimedBullet : BaseMover
     {
         private ObjectContainer _objectContainer;
-        private List<Enemy> _enemiesPool;
-        private ISpawner<Enemy> _enemy;
+        private List<EnemyControl> _enemiesPool;
+        private ISpawner<EnemyControl> _enemy;
 
         public override void Move(GameObject bullet, float speed)
         {
             base.Move(bullet, speed);
             
             _enemiesPool = _enemy.AllObject;
-            Enemy enemy = GetClosestEnemy(bullet, _enemiesPool);
-            bullet.transform.LookAt(enemy.gameObject.transform);
+            EnemyControl enemyControl = GetClosestEnemy(bullet, _enemiesPool);
+            bullet.transform.LookAt(enemyControl.gameObject.transform);
             
         }
 
-        private Enemy GetClosestEnemy(GameObject bullet, List<Enemy> enemiesPool)
+        private EnemyControl GetClosestEnemy(GameObject bullet, List<EnemyControl> enemiesPool)
         {
             
             float previousDistance = Vector3.Distance(enemiesPool[0].gameObject.transform.position, bullet.transform.position);
@@ -39,7 +39,7 @@ namespace GamePlay.Bullets.Movers
             return enemiesPool[enemyIndex];
         }
         [Inject]
-        private void Constract(ISpawner<Enemy> enemy)
+        private void Constract(ISpawner<EnemyControl> enemy)
         {
             _enemy = enemy;
         }

@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace GamePlay.Character.Components
+namespace GamePlay.Entities.Character.Components
 {
     public class InputController
     {

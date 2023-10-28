@@ -1,31 +1,30 @@
 ﻿using System.Collections.Generic;
-using GamePlay.Bullets;
 using GamePlay.Level;
 using UnityEngine;
 using Zenject;
 
 namespace GamePlay.Entities.Bullets
 {
-    public class BulletSpawner : ISpawner<Bullet>
+    public class BulletSpawner : ISpawner<BulletObject>
     {
-        private IFactoryProvider<Bullet> _factoryProvider;
-        private IFactory<Bullet> _factory;
-        public List<Bullet> AllObject { get; } = new();
+        private Services.Factories.IFactoryProvider<BulletObject> _factoryProvider;
+        private IFactory<BulletObject> _factory;
+        public List<BulletObject> AllObject { get; } = new();
 
         [Inject]
-        private void Construct(IFactoryProvider<Bullet> factoryProvider)
+        private void Construct(Services.Factories.IFactoryProvider<BulletObject> factoryProvider)
         {
             _factoryProvider = factoryProvider;
         }
 
 
-        public Bullet Spawn(string key, Vector3 position)
+        public BulletObject Spawn(string key, Vector3 position)
         {
             _factory = _factoryProvider.Provide(key);
-            Bullet bullet = _factory.Create();
+            BulletObject bulletObject = _factory.Create();
             Quaternion lookRotation = Quaternion.Euler(new Vector3(0, Random.Range(0, 180), 0));
-            AllObject.Add(bullet);
-            return bullet;
+            AllObject.Add(bulletObject);
+            return bulletObject;
         }
     }
 }

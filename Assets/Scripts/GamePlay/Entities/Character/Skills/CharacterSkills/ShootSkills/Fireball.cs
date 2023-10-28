@@ -1,10 +1,11 @@
-using GamePlay.Bullets.Movers;
+using GamePlay.Entities.Bullets;
+using UnityEngine;
 
 namespace GamePlay.Entities.Character.Skills.CharacterSkills.ShootSkills
 {
-    public class Fireball : Projectile
+    public class Fireball : ProjectileSkill
     {
-        public Fireball(SkillTypes skillTypes, BaseMover mover) : base(skillTypes, mover)
+        public Fireball(ISpawner<BulletObject> bulletSpawner, Transform shootingSkillPosition) : base(bulletSpawner, shootingSkillPosition)
         {
         }
     }

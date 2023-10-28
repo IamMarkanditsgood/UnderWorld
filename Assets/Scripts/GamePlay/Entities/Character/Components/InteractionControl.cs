@@ -1,7 +1,8 @@
 using System;
+using GamePlay.Environment;
 using UnityEngine;
 
-namespace GamePlay.Character.Components
+namespace GamePlay.Entities.Character.Components
 {
     [Serializable]
     public class InteractionControl

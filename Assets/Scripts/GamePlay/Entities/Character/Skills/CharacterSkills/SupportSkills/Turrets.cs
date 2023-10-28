@@ -1,21 +1,23 @@
-using GamePlay.Character.Skills;
-using GamePlay.Character.Skills.Dictionaries;
-using GamePlay.Character.Skills.Interface;
+using GamePlay.Entities.Character.Skills.Interface;
 using GamePlay.Entities.Turrets;
-using GamePlay.Level;
 using UnityEngine;
-using Zenject;
 
 namespace GamePlay.Entities.Character.Skills.CharacterSkills.SupportSkills
 {
-    public class Turrets : ISkillUsable<Turret>
+    public class Turrets : BaseSkillUsable
     {
-        private ISpawner<Turret> _turret;
+        private readonly ISpawner<Turret> _turretsSpawner;
+        private readonly Transform _spawnPoint;
 
-        public void UseSkill(GameObject character, ISpawner<Turret> spawner,SkillDictionaries skillDictionaries, SkillConfig skillConfig)
+        public Turrets(ISpawner<Turret> turretsSpawner, Transform spawnPoint)
         {
-            GameObject turret = _turret.Spawn("Turret", Vector3.zero).gameObject;
-            turret.transform.position = character.transform.position;
+            _turretsSpawner = turretsSpawner;
+            _spawnPoint = spawnPoint;
+        }
+        public override void UseSkill()
+        {
+            GameObject turret = _turretsSpawner.Spawn("Turret", Vector3.zero).gameObject;
+            turret.transform.position = _spawnPoint.position;
         }
         
     }

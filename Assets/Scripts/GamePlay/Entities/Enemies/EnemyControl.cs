@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace GamePlay.Entities.Enemy
+namespace GamePlay.Entities.Enemies
 {
-    public class Enemy : MonoBehaviour
+    public class EnemyControl : MonoBehaviour
     {
         public void Initialize()
         {

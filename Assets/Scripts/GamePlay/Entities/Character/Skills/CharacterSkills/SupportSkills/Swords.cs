@@ -1,26 +1,30 @@
+using System;
 using System.Threading;
 using System.Threading.Tasks;
-using GamePlay.Character.Skills.Dictionaries;
-using GamePlay.Character.Skills.Interface;
+using GamePlay.Entities.Character.Skills.Interface;
 using UnityEngine;
 
-namespace GamePlay.Character.Skills.CharacterSkills.SupportSkills
+namespace GamePlay.Entities.Character.Skills.CharacterSkills.SupportSkills
 {
-    public class Swords : ISkillUsable
+    public class Swords : BaseSkillUsable, IDisposable
     {
-        private GameObject _swords;
-        private CancellationTokenSource _cancellationTokenSource = new();
-        private bool _inUse = false;
+        private bool _inUse;
+        
+        private readonly GameObject _swords;
+        private readonly CancellationTokenSource _cancellationTokenSource = new();
 
         private const int SwordsTime = 2;
         private const int SecondsByMillisecond = 1000;
 
-        public async void UseSkill(GameObject character,SkillDictionaries skillDictionaries, SkillConfig skillConfig)
+        public Swords(GameObject swords)
+        {
+            _swords = swords;
+        }
+        public override async void UseSkill()
         {
             if (!_inUse)
             {
                 _inUse = true;
-                _swords = character.GetComponent<Character>().Swords;
                 _swords.SetActive(true);
         
                 await ShieldTimer(_cancellationTokenSource.Token);
@@ -29,10 +33,10 @@ namespace GamePlay.Character.Skills.CharacterSkills.SupportSkills
 
         private async Task ShieldTimer(CancellationToken cancellationToken)
         {
-            var completionSource = new TaskCompletionSource<bool>();
+            TaskCompletionSource<bool> completionSource = new();
             cancellationToken.Register(() => completionSource.TrySetCanceled());
         
-            await Task.Delay(SwordsTime * SecondsByMillisecond);
+            await Task.Delay(SwordsTime * SecondsByMillisecond, cancellationToken);
             _swords.SetActive(false);
             _inUse = false;
         }

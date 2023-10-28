@@ -1,8 +1,7 @@
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
 
-namespace GamePlay.Character.Components
+namespace GamePlay.Entities.Character.Components
 {
     [Serializable]
     public class RotationManager

@@ -1,19 +1,19 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using GamePlay.Character.Skills.Dictionaries;
-using GamePlay.Character.Skills.Interface;
+using GamePlay.Entities.Character.Skills.Dictionaries;
+using GamePlay.Entities.Character.Skills.Interface;
 using UnityEngine;
 
-namespace GamePlay.Character.Skills.CharacterSkills.MainSkills
+namespace GamePlay.Entities.Character.Skills.CharacterSkills.MainSkills
 {
-    public class TimeStopper : ISkillUsable, IDisposable
+    public class TimeStopper : BaseSkillUsable, IDisposable
     {
         private const int StopperTime = 5;
         private const int SecondsByMillisecond = 1000;
     
         private CancellationTokenSource _cancellationTokenSource = new();
-        public async void UseSkill(GameObject character, SkillDictionaries skillDictionaries, SkillConfig skillConfig)
+        public override async void UseSkill()
         {
             Time.timeScale = 0.2f;
             await ShieldTimer(_cancellationTokenSource.Token);

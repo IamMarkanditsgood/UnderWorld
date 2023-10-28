@@ -1,27 +1,23 @@
-using GamePlay.Character.Skills;
-using GamePlay.Character.Skills.Dictionaries;
-using GamePlay.Character.Skills.Interface;
+using GamePlay.Entities.Character.Skills.Interface;
 using GamePlay.Entities.Mines;
-using GamePlay.Level;
 using UnityEngine;
-using Zenject;
 
 namespace GamePlay.Entities.Character.Skills.CharacterSkills.SupportSkills
 {
-    public class Mines : ISkillUsable
+    public class Mines : BaseSkillUsable
     {
-        private ISpawner<Mine> _mine;
+        private readonly ISpawner<Mine> _minesSpawner;
+        private readonly Transform _spawnPoint;
 
-        public void UseSkill(GameObject character,SkillDictionaries skillDictionaries, SkillConfig skillConfig)
+        public Mines(ISpawner<Mine> minesSpawner, Transform spawnPoint)
         {
-            GameObject mine = _mine.Spawn("Mine", Vector3.zero).gameObject;
-            mine.transform.position = character.transform.position;
+            _minesSpawner = minesSpawner;
+            _spawnPoint = spawnPoint;
         }
-        [Inject]
-        private void Constract(ISpawner<Mine> mine)
+        public override void UseSkill()
         {
-            _mine = mine;
+            GameObject mine = _minesSpawner.Spawn("Mine", Vector3.zero).gameObject;
+            mine.transform.position = _spawnPoint.position;
         }
-
     }
 }

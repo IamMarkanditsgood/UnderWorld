@@ -1,18 +1,12 @@
-using GamePlay.Character.Skills.Dictionaries;
-using GamePlay.Character.Skills.Interface;
+using GamePlay.Entities.Bullets;
 using UnityEngine;
 
-namespace GamePlay.Character.Skills.CharacterSkills.ShootSkills
+namespace GamePlay.Entities.Character.Skills.CharacterSkills.ShootSkills
 {
-    public class Laser : ISkillUsable
+    public class Laser : ProjectileSkill
     {
-        private SkillTypes _skillTypes = SkillTypes.AimRockets;
-        
-
-  
-        public void UseSkill(GameObject character, SkillDictionaries skillDictionaries, SkillConfig skillConfig)
+        public Laser(ISpawner<BulletObject> bulletSpawner, Transform shootingSkillPosition) : base(bulletSpawner, shootingSkillPosition)
         {
-            //TODO Later 
         }
     }
 }

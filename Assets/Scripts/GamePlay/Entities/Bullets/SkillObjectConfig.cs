@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace GamePlay.Bullets
+namespace GamePlay.Entities.Bullets
 {
     [CreateAssetMenu(fileName = "SkillObject", menuName = "ScriptableObjects/SkillObject", order = 1)]
     public class SkillObjectConfig : ScriptableObject

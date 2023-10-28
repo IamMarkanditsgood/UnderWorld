@@ -1,10 +1,10 @@
-using GamePlay.Bullets;
-using GamePlay.Bullets.Movers;
+using GamePlay.Entities.Bullets.Movers;
+using GamePlay.Entities.Character.Skills.Enums;
 using UnityEngine;
 
 namespace GamePlay.Entities.Bullets
 {
-    public class Bullet : MonoBehaviour
+    public class BulletObject : MonoBehaviour
     {
         [SerializeField] private SkillTypes _skillTypes;
         [SerializeField] private SkillObjectConfig _skillObjectConfig;

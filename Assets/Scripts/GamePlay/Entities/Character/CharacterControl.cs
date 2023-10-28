@@ -1,13 +1,10 @@
-using System.Collections.Generic;
-using GamePlay.Bullets.Movers;
-using GamePlay.Character.Components;
-using GamePlay.Character.Skills;
-using GamePlay.Character.Skills.CharacterSkills.MainSkills;
-using GamePlay.Character.Skills.CharacterSkills.ShootSkills;
-using GamePlay.Character.Skills.CharacterSkills.SupportSkills;
 using GamePlay.Entities.Bullets;
+using GamePlay.Entities.Character.Components;
+using GamePlay.Entities.Character.Skills;
+using GamePlay.Entities.Character.Skills.CharacterSkills.MainSkills;
 using GamePlay.Entities.Character.Skills.CharacterSkills.ShootSkills;
-using GamePlay.Entities.Enemy;
+using GamePlay.Entities.Character.Skills.CharacterSkills.SupportSkills;
+using GamePlay.Entities.Character.Skills.Enums;
 using GamePlay.Entities.Mines;
 using GamePlay.Entities.Turrets;
 using GamePlay.Level;
@@ -15,9 +12,9 @@ using GamePlay.Level.ScriptableObjects;
 using UnityEngine;
 using Zenject;
 
-namespace GamePlay.Character
+namespace GamePlay.Entities.Character
 {
-    public class Character : MonoBehaviour
+    public class CharacterControl : MonoBehaviour
     {
         [SerializeField] private InitialSkillsConfig _initialSkillsConfig;
         [SerializeField] private Rigidbody _rigidbody;
@@ -29,20 +26,24 @@ namespace GamePlay.Character
         [SerializeField] private GameObject _shield;
         [SerializeField] private GameObject _swords;
         [SerializeField] private GameObject _vortex;
-        [SerializeField] private Transform _shootingSkillPos;
+        [SerializeField] private Transform _shootingSkillPosition;
         private readonly InputController _inputController = new();
-        private ISpawner<Enemy> _enemy;
-        private ISpawner<Bullet> _bullet;
-        private ISpawner<Mine> _mine;
-        private ISpawner<Turret> _turret;
+
+        private ISpawner<Enemies.EnemyControl> _enemySpawner ;
+        private ISpawner<BulletObject> _bulletSpawner ;
+        private ISpawner<Mine> _mineSpawner ;
+        private ISpawner<Turret> _turretSpawner ;
 
         private const string InteractableKey = "Interactable";
-
-        public GameObject Shield => _shield;
-        public GameObject Swords => _swords;
-        public GameObject Vortex => _vortex;
-        public Transform ShootingSkillPos => _shootingSkillPos;
-
+        
+        [Inject]
+        private void Construct(ISpawner<Enemies.EnemyControl> enemy, ISpawner<BulletObject> bullet, ISpawner<Mine> mine, ISpawner<Turret> turret)
+        {
+            _enemySpawner = enemy;
+            _bulletSpawner = bullet;
+            _mineSpawner = mine;
+            _turretSpawner = turret;
+        }
         private void Awake()
         {
             _skillsManager.SkillDictionaries.SkillsDamage = _initialSkillsConfig.SkillsDamage;
@@ -84,20 +85,22 @@ namespace GamePlay.Character
 
         private void InitSkills()
         {
-            _skillsManager.SetSkill(InputSkillVariable.Shift, SkillTypes.Teleport, new Teleport());
-            _skillsManager.SetSkill(InputSkillVariable.LeftButtonMouse, SkillTypes.Arrow, new Arrow(SkillTypes.Arrow, new StandardBullet()));
-            _skillsManager.SetSkill(InputSkillVariable.RightButtonMouse, SkillTypes.Swords, new Swords());
+            _skillsManager.SetSkill(InputSkillVariable.Shift, SkillTypes.Teleport, new Teleport(_rigidbody));
+            _skillsManager.SetSkill(InputSkillVariable.LeftButtonMouse, SkillTypes.Arrow, new Arrow(_bulletSpawner, _shootingSkillPosition));
+            _skillsManager.SetSkill(InputSkillVariable.RightButtonMouse, SkillTypes.Swords, new Swords(_swords));
         }
+
         private void OnShiftSkill() =>
-            _skillsManager.Skills[InputSkillVariable.Shift].UseSkill(_characterBody);
-        
+            _skillsManager.Skills[InputSkillVariable.Shift].UseSkill();
+
 
         private void OnLeftButtonMouseSkill() =>
-            _skillsManager.Skills[InputSkillVariable.LeftButtonMouse].UseSkill(_characterBody);
-        
+            _skillsManager.Skills[InputSkillVariable.LeftButtonMouse].UseSkill();
+
 
         private void OnRightButtonMouseSkill() =>
-            _skillsManager.Skills[InputSkillVariable.RightButtonMouse].UseSkill(_characterBody);
+            _skillsManager.Skills[InputSkillVariable.RightButtonMouse].UseSkill();
+
         private void EPressed()
         {
             if (_interactionControl.CurrentInteractableObject != null)
@@ -106,10 +109,12 @@ namespace GamePlay.Character
                 _interactionControl.CurrentInteractableObject = null;
             }
         }
+
         private void MoveCharacter(Vector2 movementDirection)
         {
             _movementManager.MoveCharacter(movementDirection, _rigidbody);
         }
+
         private void Subscribes()
         {
             _inputController.OnMoveButtonsPressed += MoveCharacter;
@@ -127,14 +132,5 @@ namespace GamePlay.Character
             _inputController.OnRightButtonMousePressed -= OnRightButtonMouseSkill;
             _inputController.OnEPressed -= EPressed;
         }
-        [Inject]
-        private void Constract(ISpawner<Enemy> enemy, ISpawner<Bullet> bullet, ISpawner<Mine> mine, ISpawner<Turret> turret)
-        {
-            _enemy = enemy;
-            _bullet = bullet;
-            _mine = mine;
-            _turret = turret;
-        }
-        
     }
 }

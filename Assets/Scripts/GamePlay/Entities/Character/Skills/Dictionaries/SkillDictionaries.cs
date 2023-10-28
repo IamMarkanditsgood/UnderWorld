@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using GamePlay.Bullets;
+using GamePlay.Entities.Character.Skills.Enums;
 
-namespace GamePlay.Character.Skills.Dictionaries
+namespace GamePlay.Entities.Character.Skills.Dictionaries
 {
     public class SkillDictionaries
     {

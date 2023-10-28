@@ -1,10 +1,12 @@
 using System.Collections.Generic;
-using GamePlay.Bullets;
+using GamePlay.Entities;
 using GamePlay.Entities.Bullets;
-using GamePlay.Entities.Enemy;
+using GamePlay.Entities.Enemies;
 using GamePlay.Entities.Mines;
 using GamePlay.Entities.Turrets;
 using GamePlay.Level;
+using Services.Factories;
+using Services.PoolObject;
 using UnityEngine;
 using Zenject;
 
@@ -27,26 +29,26 @@ namespace Services.Installers.Scene
 
         private void BindEnemy()
         {
-            FactoryProvider<Enemy> enemyFactoryProvider = CreateFactoryProvider<Enemy>(_enemyPools);
-            Container.Bind<IFactoryProvider<Enemy>>().FromInstance(enemyFactoryProvider).AsSingle();
-            Container.Bind<ISpawner<Enemy>>().To<EnemySpawner>().AsSingle();
+            FactoryProvider<EnemyControl> enemyFactoryProvider = CreateFactoryProvider<EnemyControl>(_enemyPools);
+            Container.Bind<Factories.IFactoryProvider<EnemyControl>>().FromInstance(enemyFactoryProvider).AsSingle();
+            Container.Bind<ISpawner<EnemyControl>>().To<EnemySpawner>().AsSingle();
         }
         private void BindBullet()
         {
-            FactoryProvider<Bullet> bulletFactoryProvider = CreateFactoryProvider<Bullet>(_bulletsPools);
-            Container.Bind<IFactoryProvider<Bullet>>().FromInstance(bulletFactoryProvider).AsSingle();
-            Container.Bind<ISpawner<Bullet>>().To<BulletSpawner>().AsSingle();
+            FactoryProvider<BulletObject> bulletFactoryProvider = CreateFactoryProvider<BulletObject>(_bulletsPools);
+            Container.Bind<Factories.IFactoryProvider<BulletObject>>().FromInstance(bulletFactoryProvider).AsSingle();
+            Container.Bind<ISpawner<BulletObject>>().To<BulletSpawner>().AsSingle();
         }
         private void BindMine()
         {
             FactoryProvider<Mine> mineFactoryProvider = CreateFactoryProvider<Mine>(_minesPools);
-            Container.Bind<IFactoryProvider<Mine>>().FromInstance(mineFactoryProvider).AsSingle();
+            Container.Bind<Factories.IFactoryProvider<Mine>>().FromInstance(mineFactoryProvider).AsSingle();
             Container.Bind<ISpawner<Mine>>().To<MineSpawner>().AsSingle();
         }
         private void BindTurret()
         {
             FactoryProvider<Turret> enemyFactoryProvider = CreateFactoryProvider<Turret>(_turretsPools);
-            Container.Bind<IFactoryProvider<Turret>>().FromInstance(enemyFactoryProvider).AsSingle();
+            Container.Bind<Factories.IFactoryProvider<Turret>>().FromInstance(enemyFactoryProvider).AsSingle();
             Container.Bind<ISpawner<Turret>>().To<TurretSpawner>().AsSingle();
         }
 

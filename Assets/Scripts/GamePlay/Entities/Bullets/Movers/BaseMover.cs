@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace GamePlay.Bullets.Movers
+namespace GamePlay.Entities.Bullets.Movers
 {
     public abstract class BaseMover
     {
