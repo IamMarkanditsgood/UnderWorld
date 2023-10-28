@@ -1,4 +1,4 @@
-namespace GamePlay.Character.Skills
+namespace GamePlay.Entities.Character.Skills
 {
     public enum InputSkillVariable
     {

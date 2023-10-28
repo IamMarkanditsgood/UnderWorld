@@ -1,15 +1,13 @@
-using GamePlay.Bullets;
-using GamePlay.Bullets.Movers;
-using GamePlay.Character.Skills;
-using GamePlay.Character.Skills.Dictionaries;
-using GamePlay.Character.Skills.Interface;
+using GamePlay.Entities.Bullets;
+using GamePlay.Entities.Bullets.Movers;
+using GamePlay.Entities.Character.Skills.Enums;
 using UnityEngine;
 
 namespace GamePlay.Entities.Character.Skills.CharacterSkills.ShootSkills
 {
-    public class AimRockets : Projectile
+    public class AimRockets : ProjectileSkill
     {
-        public AimRockets(SkillTypes skillTypes, BaseMover mover) : base(skillTypes, mover)
+        public AimRockets(ISpawner<BulletObject> bulletSpawner, Transform shootingSkillPosition) : base(bulletSpawner, shootingSkillPosition)
         {
         }
     }

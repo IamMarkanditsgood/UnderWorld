@@ -1,4 +1,4 @@
-namespace GamePlay.Bullets.Movers
+namespace GamePlay.Entities.Bullets.Movers
 {
     public class StandardBullet: BaseMover
     {

@@ -8,12 +8,12 @@ namespace GamePlay.Entities.Turrets
 {
     public class TurretSpawner : ISpawner<Turret>
     {
-        private IFactoryProvider<Turret> _factoryProvider;
+        private Services.Factories.IFactoryProvider<Turret> _factoryProvider;
         private IFactory<Turret> _factory;
         public List<Turret> AllObject { get; } = new();
 
         [Inject]
-        private void Construct(IFactoryProvider<Turret> factoryProvider)
+        private void Construct(Services.Factories.IFactoryProvider<Turret> factoryProvider)
         {
             _factoryProvider = factoryProvider;
         }

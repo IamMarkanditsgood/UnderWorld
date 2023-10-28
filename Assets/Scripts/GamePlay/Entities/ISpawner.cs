@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace GamePlay.Level
+namespace GamePlay.Entities
 {
     public interface ISpawner<T> where T : MonoBehaviour
     {

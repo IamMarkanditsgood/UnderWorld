@@ -7,12 +7,12 @@ namespace GamePlay.Entities.Mines
 {
     public class MineSpawner  : ISpawner<Mine>
     {
-        private IFactoryProvider<Mine> _factoryProvider;
+        private Services.Factories.IFactoryProvider<Mine> _factoryProvider;
         private IFactory<Mine> _factory;
         public List<Mine> AllObject { get; } = new();
 
         [Inject]
-        private void Construct(IFactoryProvider<Mine> factoryProvider)
+        private void Construct(Services.Factories.IFactoryProvider<Mine> factoryProvider)
         {
             _factoryProvider = factoryProvider;
         }

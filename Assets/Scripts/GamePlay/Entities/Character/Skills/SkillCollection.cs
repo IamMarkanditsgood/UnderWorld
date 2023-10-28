@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace GamePlay.Character.Skills
+namespace GamePlay.Entities.Character.Skills
 {
     [CreateAssetMenu(fileName = "SkillCollection", menuName = "ScriptableObjects/Skills/Collection", order = 1)]
     public class SkillCollection : ScriptableObject

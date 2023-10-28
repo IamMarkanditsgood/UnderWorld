@@ -1,10 +1,11 @@
-using GamePlay.Bullets.Movers;
+using GamePlay.Entities.Bullets;
+using UnityEngine;
 
 namespace GamePlay.Entities.Character.Skills.CharacterSkills.ShootSkills
 {
-    public class Arrow : Projectile
+    public class Arrow : ProjectileSkill
     {
-        public Arrow(SkillTypes skillTypes, BaseMover mover) : base(skillTypes, mover)
+        public Arrow(ISpawner<BulletObject> bulletSpawner, Transform shootingSkillPosition) : base(bulletSpawner, shootingSkillPosition)
         {
         }
     }

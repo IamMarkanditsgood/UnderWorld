@@ -1,6 +1,9 @@
 ﻿using Zenject;
 
-public interface IFactoryProvider<T>
+namespace Services.Factories
 {
-    IFactory<T> Provide(string key);
+    public interface IFactoryProvider<T>
+    {
+        IFactory<T> Provide(string key);
+    }
 }

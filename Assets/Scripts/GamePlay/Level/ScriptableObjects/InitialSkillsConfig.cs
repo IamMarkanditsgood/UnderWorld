@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
-using GamePlay.Bullets;
-using GamePlay.Character.Skills.Dictionaries;
+using GamePlay.Entities.Character.Skills.Enums;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
