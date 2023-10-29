@@ -13,3 +13,6 @@ MonoBehaviour:
   m_Name: Prefabs
   m_EditorClassIdentifier: 
   _zombieEnemyPrefab: {fileID: 7468076025091679961, guid: 30b8ad48baf80ab4f9fd17b176664ad8, type: 3}
+  _bullet: {fileID: 1124475506644554968, guid: 33df8bfda41b067478716a4587d9280b, type: 3}
+  _mines: {fileID: 5564262987486981678, guid: 4cc87ff95593fdf449859d193dd8fc55, type: 3}
+  _turrets: {fileID: 2410467437351613677, guid: 18a4bf38091902f4a81072ba61bbb776, type: 3}

@@ -1,4 +1,7 @@
-public interface IInteractable
+namespace GamePlay.Environment
 {
-    public void InteractWithCharacter();
+    public interface IInteractable
+    {
+        public void InteractWithCharacter();
+    }
 }

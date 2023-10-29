@@ -1,21 +1,23 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 namespace Services.PoolObject
 {
     public class ObjectPool
     {
+        private DiContainer _diContainer;
         private GameObject Prefab { get; }
         private Transform Container { get; }
         
         public List<GameObject> DisabledPool { get; private set; }
         public List<GameObject> EnabledPool { get; private set; }
 
-        public ObjectPool(GameObject prefab, int count, Transform container)
+        public ObjectPool(GameObject prefab, int count, Transform container, DiContainer diContainer)
         {
             Prefab = prefab;
             Container = container;
-
+            _diContainer = diContainer;
             CreatePool(count);
         }
 
@@ -31,7 +33,9 @@ namespace Services.PoolObject
 
         private GameObject CreateObject(bool isActiveByDefault = false)
         {
-            GameObject createObject = Object.Instantiate(Prefab, Container);
+            GameObject createObject = _diContainer != null
+                ? _diContainer.InstantiatePrefab(Prefab, Container)
+                : Object.Instantiate(Prefab, Container);
 
             createObject.gameObject.SetActive(isActiveByDefault);
             var destroyables = createObject.gameObject.GetComponents<PoolDestroyable>();
