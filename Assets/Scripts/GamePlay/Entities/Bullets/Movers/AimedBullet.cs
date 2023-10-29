@@ -8,7 +8,6 @@ namespace GamePlay.Entities.Bullets.Movers
 {
     public class AimedBullet : BaseMover
     {
-        private ObjectContainer _objectContainer;
         private List<EnemyControl> _enemiesPool;
         private ISpawner<EnemyControl> _enemy;
 

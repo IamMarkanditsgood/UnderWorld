@@ -8,7 +8,6 @@ namespace GamePlay.Entities.Character.Skills.CharacterSkills.MainSkills
 {
     public class SuperKiller : BaseSkillUsable
     {
-        private ObjectContainer _objectContainer;
         private readonly ISpawner<EnemyControl> _enemySpawnerSpawner;
 
         public SuperKiller(ISpawner<EnemyControl> enemySpawner)
