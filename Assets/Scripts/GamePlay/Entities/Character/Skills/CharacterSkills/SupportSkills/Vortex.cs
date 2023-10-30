@@ -1,6 +1,5 @@
 using System.Threading;
 using System.Threading.Tasks;
-using GamePlay.Entities.Character.Skills.Interface;
 using GamePlay.Level;
 using UnityEngine;
 

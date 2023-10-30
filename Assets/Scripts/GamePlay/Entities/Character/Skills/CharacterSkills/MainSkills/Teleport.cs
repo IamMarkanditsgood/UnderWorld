@@ -1,4 +1,3 @@
-using GamePlay.Entities.Character.Skills.Interface;
 using UnityEngine;
 
 namespace GamePlay.Entities.Character.Skills.CharacterSkills.MainSkills

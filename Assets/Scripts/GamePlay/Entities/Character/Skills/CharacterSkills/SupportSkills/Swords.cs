@@ -1,7 +1,6 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using GamePlay.Entities.Character.Skills.Interface;
 using UnityEngine;
 
 namespace GamePlay.Entities.Character.Skills.CharacterSkills.SupportSkills

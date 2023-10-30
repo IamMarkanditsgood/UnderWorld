@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using GamePlay.Entities.Character.Skills.Dictionaries;
 using GamePlay.Entities.Character.Skills.Enums;
-using GamePlay.Entities.Character.Skills.Interface;
 using UnityEngine;
 
 namespace GamePlay.Entities.Character.Skills

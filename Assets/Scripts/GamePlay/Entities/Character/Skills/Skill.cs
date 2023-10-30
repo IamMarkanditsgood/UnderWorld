@@ -1,5 +1,4 @@
 using GamePlay.Entities.Character.Skills.Dictionaries;
-using GamePlay.Entities.Character.Skills.Interface;
 
 namespace GamePlay.Entities.Character.Skills
 {

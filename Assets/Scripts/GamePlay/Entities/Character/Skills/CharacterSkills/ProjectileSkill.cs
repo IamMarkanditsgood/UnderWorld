@@ -1,7 +1,6 @@
 ﻿using GamePlay.Entities.Bullets;
 using GamePlay.Entities.Bullets.Movers;
 using GamePlay.Entities.Character.Skills.Enums;
-using GamePlay.Entities.Character.Skills.Interface;
 using UnityEngine;
 
 namespace GamePlay.Entities.Character.Skills.CharacterSkills
@@ -12,21 +11,20 @@ namespace GamePlay.Entities.Character.Skills.CharacterSkills
         private readonly ISpawner<BulletObject> _bulletSpawner;
         
         protected readonly BaseMover Mover;
-        protected SkillTypes SkillTypes;
 
-        public ProjectileSkill(ISpawner<BulletObject> bulletSpawner,Transform shootingSkillPosition)
+        public ProjectileSkill(ISpawner<BulletObject> bulletSpawner,Transform shootingSkillPosition, BaseMover mover)
         {
             _bulletSpawner = bulletSpawner;
             _shootingSkillPosition = shootingSkillPosition;
             
-            Mover = new StandardBullet();
+            Mover = mover;
         }
         public override void UseSkill()
         {
             Shot(Mover);
         }
 
-        private void Shot(BaseMover mover)
+        private void Shot(BaseMover mover) //TODO Make one class for enemy and character for shooting
         {
             GameObject bullet =  _bulletSpawner.Spawn("Bullet", Vector3.zero).gameObject;
             

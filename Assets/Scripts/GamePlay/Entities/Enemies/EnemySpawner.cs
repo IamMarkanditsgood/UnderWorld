@@ -22,8 +22,7 @@ namespace GamePlay.Entities.Enemies
             _factory = _factoryProvider.Provide(key);
             Enemies.EnemyControl enemyControl = _factory.Create();
             Quaternion lookRotation = Quaternion.Euler(new Vector3(0, Random.Range(0, 180), 0));
-        
-            enemyControl.Initialize();
+            
             AllObject.Add(enemyControl);
             return enemyControl;
         }

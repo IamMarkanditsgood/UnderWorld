@@ -1,6 +1,6 @@
 using GamePlay.Entities.Character.Skills.Dictionaries;
 
-namespace GamePlay.Entities.Character.Skills.Interface
+namespace GamePlay.Entities.Character.Skills
 {
     public abstract class BaseSkillUsable
     {

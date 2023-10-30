@@ -7,7 +7,7 @@ namespace GamePlay.Entities.Character.Skills.CharacterSkills.ShootSkills
 {
     public class AimRockets : ProjectileSkill
     {
-        public AimRockets(ISpawner<BulletObject> bulletSpawner, Transform shootingSkillPosition) : base(bulletSpawner, shootingSkillPosition)
+        public AimRockets(ISpawner<BulletObject> bulletSpawner, Transform shootingSkillPosition) : base(bulletSpawner, shootingSkillPosition, new AimedBullet())
         {
         }
     }
