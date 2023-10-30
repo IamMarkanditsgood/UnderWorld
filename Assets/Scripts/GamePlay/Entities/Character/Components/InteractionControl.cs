@@ -8,7 +8,6 @@ namespace GamePlay.Entities.Character.Components
     public class InteractionControl
     {
         [SerializeField] private GameObject _currentInteractableObject;
-        private bool _isInteract = false;
 
         public GameObject CurrentInteractableObject
         {
