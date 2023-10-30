@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25067e7b4c4f4854cafe0906cd5f9f9c, type: 3}
+  m_Name: Prefabs
+  m_EditorClassIdentifier: 
+  _zombieEnemyPrefab: {fileID: 7468076025091679961, guid: 30b8ad48baf80ab4f9fd17b176664ad8, type: 3}
+  _bullet: {fileID: 1124475506644554968, guid: 33df8bfda41b067478716a4587d9280b, type: 3}
+  _mines: {fileID: 5564262987486981678, guid: 4cc87ff95593fdf449859d193dd8fc55, type: 3}
+  _turrets: {fileID: 2410467437351613677, guid: 18a4bf38091902f4a81072ba61bbb776, type: 3}
