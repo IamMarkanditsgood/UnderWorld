@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec91036b53af4979b65ef4c17e47aaab, type: 3}
-  m_Name: Paladine
+  m_Script: {fileID: 11500000, guid: ab0eba60425903247995557e0f5638da, type: 3}
+  m_Name: MagShoot
   m_EditorClassIdentifier: 
-  _closeAttackDistance: 5
-  _farAttackDistance: 22
-  _waitDistance: 33
-  _enemySkills: {fileID: 11400000, guid: a79c29e65ebddf845bb9830e11ec8dd5, type: 2}
+  _skillTypes: 0
+  _skillSound: {fileID: 0}
+  _skillObjectConfig: {fileID: 11400000, guid: 90b17dbd36c2fe846bd2013196e7cd90, type: 2}

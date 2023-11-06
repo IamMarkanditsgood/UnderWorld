@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using GamePlay.Entities.Bullets;
+using GamePlay.Entities.Enemies.EnemySkills;
+using GamePlay.Entities.Enemies.ScriptableObject;
+using UnityEngine;
 using UnityEngine.AI;
 
 namespace GamePlay.Entities.Enemies
@@ -8,29 +11,49 @@ namespace GamePlay.Entities.Enemies
         protected float CloseAttackDistance;
         protected float FarAttackDistance;
         protected float WaitDistance;
+        protected Transform ShootingSkillPosition;
+        protected readonly ISpawner<BulletObject> BulletSpawner;
         protected readonly Transform PlayerPosition;
-
-
-        public BaseBrain(Transform playerPosition)
+        protected EnemyConfig EnemyConfig;
+        
+        protected NavMeshAgent NavMeshAgent;
+        public BaseBrain(Transform playerPosition,ISpawner<BulletObject> bulletSpawner)
         {
             PlayerPosition = playerPosition;
+            BulletSpawner = bulletSpawner;
+            
         }
-        public abstract void CheckDistance(Transform positionOfEnemy, NavMeshAgent navMeshAgent);
+        public abstract void CheckDistance(Transform positionOfEnemy);
         
-        public virtual void Initialize(float closeAttackDistance, float farAttackDistance, float waitDistance)
+        public virtual void Initialize(EnemyConfig enemyConfig, NavMeshAgent navMeshAgent, Transform shootingSkillPosition)
         {
-            CloseAttackDistance = closeAttackDistance;
-            FarAttackDistance = farAttackDistance;
-            WaitDistance = waitDistance;
+            EnemyConfig = enemyConfig;
+            CloseAttackDistance = enemyConfig.CloseAttackDistance;
+            FarAttackDistance = enemyConfig.FarAttackDistance;
+            WaitDistance = enemyConfig.WaitDistance;
+            
+            NavMeshAgent = navMeshAgent;
+            ShootingSkillPosition = shootingSkillPosition;
+            InitializeSkills();
+        }
+        
+        public abstract void InitializeSkills();
+        public virtual void SetDestination()
+        {
+            NavMeshAgent.SetDestination(PlayerPosition.transform.position);
         }
         public virtual void Move()
         {
-            Debug.Log("MOve");
+            NavMeshAgent.isStopped = false;
         }
-
-        public virtual void Attack()
+        public virtual void Stop()
         {
-            Debug.Log("Attack");
+            NavMeshAgent.isStopped = true;
+            
+        }
+        public virtual void Attack(EnemyBaseSkill enemyBaseSkill)
+        {
+            enemyBaseSkill.UseSkill();
         }
     }
 }

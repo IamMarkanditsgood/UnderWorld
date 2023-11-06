@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: FireBall
   m_EditorClassIdentifier: 
   _sound: {fileID: 0}
+  _speed: 15

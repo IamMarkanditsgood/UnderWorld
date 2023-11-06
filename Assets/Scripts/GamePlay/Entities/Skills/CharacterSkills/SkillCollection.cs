@@ -1,3 +1,4 @@
+using GamePlay.Entities.Skills.CharacterSkills;
 using UnityEngine;
 
 namespace GamePlay.Entities.Character.Skills
