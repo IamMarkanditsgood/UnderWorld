@@ -7,6 +7,7 @@ namespace GamePlay.Entities.Character.Skills.CharacterSkills
 {
     public class ProjectileSkill : BaseSkillUsable
     {
+        private readonly Shooter _shooter = new Shooter();
         private readonly Transform _shootingSkillPosition;
         private readonly ISpawner<BulletObject> _bulletSpawner;
         
@@ -21,23 +22,7 @@ namespace GamePlay.Entities.Character.Skills.CharacterSkills
         }
         public override void UseSkill()
         {
-            Shot(Mover);
-        }
-
-        private void Shot(BaseMover mover) //TODO Make one class for enemy and character for shooting
-        {
-            GameObject bullet =  _bulletSpawner.Spawn("Bullet", Vector3.zero).gameObject;
-            
-            bullet.transform.position = _shootingSkillPosition.position;
-            bullet.transform.rotation = _shootingSkillPosition.rotation;
-            
-            var bulletObjectManager = bullet.GetComponent<BulletObject>();
-            if (bulletObjectManager == null)
-            {
-                bulletObjectManager = bullet.AddComponent<BulletObject>();
-            }
-            
-            bulletObjectManager.InitBullet(SkillConfig.SkillTypes, mover, SkillConfig.SkillObjectConfig);
+            _shooter.Shot(Mover, _bulletSpawner, _shootingSkillPosition, SkillConfig);
         }
     }
 }

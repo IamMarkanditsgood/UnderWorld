@@ -2,7 +2,7 @@ using GamePlay.Entities.Bullets;
 using GamePlay.Entities.Character.Skills.Enums;
 using UnityEngine;
 
-namespace GamePlay.Entities.Character.Skills
+namespace GamePlay.Entities.Skills.CharacterSkills
 {
     [CreateAssetMenu(fileName = "SkillData", menuName = "ScriptableObjects/Skills/Skill", order = 1)]
     public class SkillConfig : ScriptableObject
